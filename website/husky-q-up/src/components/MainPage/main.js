@@ -20,6 +20,9 @@ const Main = () => {
           <li>
             <Link to="/about">About</Link>
           </li>
+          <li>
+            <Login/>
+          </li>
         </ul>
 
         <hr />

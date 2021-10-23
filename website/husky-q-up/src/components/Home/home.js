@@ -1,16 +1,18 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import sio from "socket.io-client";
-
+import {profile} from'../Login/login';
 
 
 
 const Home = () => {
     const socket =  sio("http://localhost:4040");
-
     let newPerson = () => {
         console.log('click');
-        socket.emit("New Person");
+        let person_info = profile.profileObj;
+        console.log(person_info);
+        socket.emit("New Person", person_info);
+        
     }
 
     return(<main>
