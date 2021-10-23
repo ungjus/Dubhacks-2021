@@ -18,9 +18,10 @@ import { Nav, Navbar, Container } from 'react-bootstrap';
 const Main = () => {
     const [profile, setProfile] = useState(null);
     const [locations, setLocations] = useState(['lander', 'local point']);
-
+    const [userData, setUserData] = useState({});
+    const socket =  sio("http://localhost:4040");
     useEffect(() => {
-        const socket =  sio("http://localhost:4040");
+        
 
         socket.emit("Send Location");
         socket.on("Get Locations", (loc_list) => {
@@ -29,6 +30,19 @@ const Main = () => {
             setLocations(loc_list);
         });
     }, []);
+
+    const getUserData = (userData) => {
+        // store it in state
+        console.log('in sendUserData');
+        console.log(userData);
+        setUserData(userData);
+        // pass down as prop to home
+    }
+
+    const sendUserData = () => {
+        // send to server with userData
+        socket.emit("New Person", userData); 
+    }
 
     const updateLocation = () => {
 
@@ -40,7 +54,7 @@ const Main = () => {
 
         <Switch>
             <Route exact path="/">
-                <Home locations={locations} />
+                <Home locations={locations} sendUserData={sendUserData} />
             </Route>
             <Route path="/about">
                 <About/>
