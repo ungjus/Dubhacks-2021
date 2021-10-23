@@ -7,10 +7,10 @@ import {
   } from "react-router-dom";
   
 
-const Main = () => {
+const About = () => {
     return(<main>
-        <h1>hello world!</h1>
+        <h1>About Page!</h1>
     </main>)
 }
 
-export default Main
+export default About
