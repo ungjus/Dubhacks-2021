@@ -4,8 +4,7 @@ import './index.css';
 import Main from './components/MainPage/main';
 import Home from './components/Home/home';
 import { BrowserRouter} from 'react-router-dom';
-
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(
   <BrowserRouter>
