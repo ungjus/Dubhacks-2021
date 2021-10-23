@@ -9,8 +9,9 @@ app = Flask(__name__)
 sio = SocketIO(app, cors_allowed_origins="*")
 
 @sio.on("New Person")
-def addPerson():
+def addPerson(profile):
     print('new person added!')
+    print(profile)
 
 if __name__ == '__main__':
     print('hello world')

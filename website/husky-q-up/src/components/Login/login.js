@@ -3,9 +3,11 @@ import { GoogleLogin } from 'react-google-login';
 
 const clientId = "925806163579-kmv3bckvc1m6j8phdmi07mtbhlde7tb1.apps.googleusercontent.com";
 
-const Login = (props) => {
+let profile;
+
+const Login = () => {
     const respond = (res) => {
-        console.log(res.profileObj);
+        profile = res;
     }
 
     return(
@@ -23,5 +25,5 @@ const Login = (props) => {
 
 
 }
-
+export {profile};
 export default Login;
