@@ -8,10 +8,17 @@ HOST_PORT = '4040'
 app = Flask(__name__)
 sio = SocketIO(app, cors_allowed_origins="*")
 
+locations = ['lander', 'lopo']
+
 @sio.on("New Person")
-def addPerson(profile):
+def add_person(profile):
     print('new person added!')
     print(profile)
+
+@sio.on("Send Location")
+def send_location():
+    print('sending locations')
+    sio.emit('Get Locations', locations)
 
 if __name__ == '__main__':
     print('hello world')

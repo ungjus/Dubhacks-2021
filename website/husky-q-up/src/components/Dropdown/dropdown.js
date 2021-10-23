@@ -12,7 +12,6 @@ const Dropdown = (props) => {
     //     return options;
     // };
 
-
     const options = [
         {value: "lander", label: "Lander Desk"},
         {value: "lopo", label: "Local Point"}
