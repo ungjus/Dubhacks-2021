@@ -3,9 +3,9 @@ import { GoogleLogin } from 'react-google-login';
 
 const clientId = "925806163579-kmv3bckvc1m6j8phdmi07mtbhlde7tb1.apps.googleusercontent.com";
 
-const Login = () => {
+const Login = (props) => {
     const respond = (res) => {
-        console.log(res);
+        console.log(res.profileObj);
     }
 
     return(

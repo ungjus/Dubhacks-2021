@@ -1,9 +1,7 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import sio from "socket.io-client";
-
-
-
+import Dropdown from '../Dropdown/dropdown';
 
 const Home = () => {
     const socket =  sio("http://localhost:4040");
@@ -16,6 +14,7 @@ const Home = () => {
     return(<main>
         <h1>Home page</h1>
         <Button variant="primary" onClick={newPerson}>Q Up Gamer</Button>{' '}
+        <Dropdown/>
     </main>)
     
 }

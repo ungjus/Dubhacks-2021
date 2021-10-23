@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     BrowserRouter as Router,
     Switch,
@@ -11,7 +11,10 @@ import Home from '../Home/home'
 import About from '../About/about'
 import Footer from '../Footer/footer'
 
+
 const Main = () => {
+    const [profile, setProfile] = useState(null);
+
     return(<Router>
         <ul>
           <li>
