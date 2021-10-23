@@ -10,15 +10,15 @@ conn = connect()
 historical_tables = ['pagliacci_historical', 'lander_desk_historical']
 current_tables = ['pagliacci_current', 'lander_desk_current']
 
-for table in historical_tables:
+#for table in historical_tables:
     #drop_table(conn, table)
 
-for table in current_tables:
+#for table in current_tables:
     #drop_table(conn, table)
 
 create_tables(conn)
 
-add_historical_data(conn, 'lander_desk_historical', [x, 1, 10, 2])
+add_historical_data(conn, "lander_desk_historical", [x, 1, 10, 2])
 
 add_one_person_to_line(conn, 'lander_desk_current', ['Han', 'Nguyen', 'han@gmail.com'])
 

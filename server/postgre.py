@@ -36,7 +36,7 @@ def create_tables(conn):
     """ create tables in the PostgreSQL database"""
     commands = (
         """
-        CREATE TABLE pagliacci_historical (
+        CREATE TABLE "pagliacci_historical" (
             id serial primary key,
             date TEXT,
             military_time_hour decimal,
@@ -45,7 +45,7 @@ def create_tables(conn):
         )
         """,
         """
-        CREATE TABLE pagliacci_current (
+        CREATE TABLE "pagliacci_current" (
             line_number serial primary key,
             givenName TEXT,
             familyName TEXT,
@@ -53,7 +53,7 @@ def create_tables(conn):
         )
         """,
         """
-        CREATE TABLE lander_desk_historical (
+        CREATE TABLE "lander_desk_historical" (
             id serial primary key,
             date TEXT,
             military_time_hour decimal,
@@ -62,7 +62,7 @@ def create_tables(conn):
         )
         """,
         """
-        CREATE TABLE lander_desk_current (
+        CREATE TABLE "lander_desk_current" (
             line_number serial primary key,
             givenName TEXT,
             familyName TEXT,
