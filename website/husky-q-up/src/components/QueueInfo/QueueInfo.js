@@ -1,11 +1,11 @@
 import React from 'react';
 
 
-const QueueInfo = () => {
+const QueueInfo = ({ selectedLocation }) => {
 
     return(
         <div className="queue-info">
-            
+            {selectedLocation}
         </ div>
     )
 }

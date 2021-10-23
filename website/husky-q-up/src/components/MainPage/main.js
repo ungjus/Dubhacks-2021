@@ -62,13 +62,18 @@ const Main = () => {
 
         <Switch>
             <Route exact path="/">
-                <Home locations={locations} sendUserData={sendUserData} getLocation={getLocation}/>
+                <Home 
+                    locations={locations}
+                    sendUserData={sendUserData}
+                    getLocation={getLocation}
+                    selectedLocation={selectedLocation}
+                />
             </Route>
             <Route path="/about">
                 <About/>
             </Route>
             <Route path="/admin">
-                <Admin/>
+                <Admin />
             </Route>
         </Switch>
         <Footer/>
