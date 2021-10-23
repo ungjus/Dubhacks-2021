@@ -7,7 +7,7 @@ import QueueInfo from '../QueueInfo/QueueInfo';
 
 import './home.css';
 
-const Home = ({ locations, sendUserData, removeUserData, getLocation }) => {
+const Home = ({ locations, sendUserData, removeUserData, getLocation, selectedLocation }) => {
     const [inQueue, setInQueue] = useState(false);
     // const socket =  sio("http://localhost:4040");
 
