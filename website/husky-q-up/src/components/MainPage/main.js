@@ -6,11 +6,13 @@ import {
     Link
   } from "react-router-dom";
   
+import Login from '../Login/login';
 
 const Main = () => {
     return(<main>
         <h1>hello world!</h1>
+        <Login></Login>
     </main>)
 }
 
-export default Main
+export default Main;
