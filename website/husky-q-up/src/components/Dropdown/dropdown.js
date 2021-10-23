@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Select from 'react-select';
 
-const Dropdown = ({ locations }) => {
+const Dropdown = ({ locations, getLocation }) => {
 
     // generate options for dropdown list
     // generateOptions = () => {
@@ -31,14 +31,17 @@ const Dropdown = ({ locations }) => {
     //     {value: "lopo", label: "Local Point"}
     // ];
 
-    // const handleChange = () => {
-    //     console.log('location picked');           
-    // }
+    const handleChange = (val) => {
+         console.log('location picked');   
+        getLocation(val);
+    }
+
 
     return (
         <div>
             <Select
                 options={generateOptions()}
+                onChange={handleChange}
             />
         </div>
     );

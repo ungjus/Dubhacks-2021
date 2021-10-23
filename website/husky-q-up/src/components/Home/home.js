@@ -6,7 +6,7 @@ import Dropdown from '../Dropdown/dropdown';
 
 import './home.css';
 
-const Home = ({ locations, sendUserData }) => {
+const Home = ({ locations, sendUserData, getLocation }) => {
     // const socket =  sio("http://localhost:4040");
 
     // let newPerson = () => {
@@ -21,7 +21,7 @@ const Home = ({ locations, sendUserData }) => {
             <Container>
                 <h1>Home page</h1>
                 <Button variant="primary" onClick={sendUserData} >Q Up Gamer</Button>{' '}
-                <Dropdown locations={locations} />
+                <Dropdown locations={locations} getLocation={getLocation}/>
                 <div className="queue-data">There are this many people in line</div>
             </ Container>
         </main>

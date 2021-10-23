@@ -19,10 +19,11 @@ const Main = () => {
     const [profile, setProfile] = useState(null);
     const [locations, setLocations] = useState(['lander', 'local point']);
     const [userData, setUserData] = useState({});
-    const socket =  sio("http://localhost:4040");
-    useEffect(() => {
-        
+    const [selectedLocation, setSelectedLocation] = useState("");
 
+    const socket =  sio("http://localhost:4040");
+
+    useEffect(() => {
         socket.emit("Send Location");
         socket.on("Get Locations", (loc_list) => {
             console.log('Got locations!');
@@ -30,6 +31,11 @@ const Main = () => {
             setLocations(loc_list);
         });
     }, []);
+
+    const getLocation = (loc) => {
+        console.log(loc.value);
+        setSelectedLocation(loc.value);
+    }
 
     const getUserData = (userData) => {
         // store it in state
@@ -41,6 +47,8 @@ const Main = () => {
 
     const sendUserData = () => {
         // send to server with userData
+        userData["location"] = selectedLocation
+        console.log(userData);
         socket.emit("New Person", userData); 
     }
 
@@ -50,11 +58,11 @@ const Main = () => {
     }
 
     return(<Router>
-        <NavBar/>
+        <NavBar getUserData={getUserData}/>
 
         <Switch>
             <Route exact path="/">
-                <Home locations={locations} sendUserData={sendUserData} />
+                <Home locations={locations} sendUserData={sendUserData} getLocation={getLocation}/>
             </Route>
             <Route path="/about">
                 <About/>

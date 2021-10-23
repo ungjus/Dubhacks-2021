@@ -5,7 +5,7 @@ import {
 import { Nav, Navbar, Container } from 'react-bootstrap';
 import Login from '../Login/login';
 
-const NavBar = ({ locations }) => {
+const NavBar = ({ getUserData }) => {
 
 
     return(
@@ -16,7 +16,7 @@ const NavBar = ({ locations }) => {
                 <Nav.Link as={Link} to="/">Home</Nav.Link>
                 <Nav.Link as={Link} to="/about">About</Nav.Link>
                 <Nav.Link as={Link} to="/admin">Admin</Nav.Link>
-                <Login/>
+                <Login getUserData={getUserData}/>
             </Nav>
             </Container>
         </Navbar>
