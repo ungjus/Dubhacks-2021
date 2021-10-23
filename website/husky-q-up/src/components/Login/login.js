@@ -3,12 +3,16 @@ import { GoogleLogin } from 'react-google-login';
 
 const clientId = "925806163579-kmv3bckvc1m6j8phdmi07mtbhlde7tb1.apps.googleusercontent.com";
 
-let profile;
+// let profile;
 
-const Login = () => {
+const Login = ({ getUserData }) => {
+    // user state? 
+    
     const respond = (res) => {
-        profile = res;
+        getUserData(res.profileObj);
     }
+
+    // function: after login, grab user data and call callback function in main
 
     return(
         <div>
@@ -25,5 +29,5 @@ const Login = () => {
 
 
 }
-export {profile};
+
 export default Login;
