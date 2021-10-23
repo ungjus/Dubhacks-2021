@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Button, Container } from 'react-bootstrap';
 import sio from "socket.io-client";
 import Dropdown from '../Dropdown/dropdown';
@@ -6,7 +6,8 @@ import Dropdown from '../Dropdown/dropdown';
 
 import './home.css';
 
-const Home = ({ locations, sendUserData, getLocation }) => {
+const Home = ({ locations, sendUserData, removeUserData, getLocation }) => {
+    const [inQueue, setInQueue] = useState(false);
     // const socket =  sio("http://localhost:4040");
 
     // let newPerson = () => {
@@ -15,14 +16,26 @@ const Home = ({ locations, sendUserData, getLocation }) => {
     //     console.log(person_info);
     //     socket.emit("New Person", person_info); 
     // }
-
+    const handleClick = () => {
+        inQueue ? removeUserData(): sendUserData()
+        setInQueue(!inQueue);
+    }
     return(
         <main>
             <Container>
                 <h1>Home page</h1>
-                <Button variant="primary" onClick={sendUserData} >Q Up Gamer</Button>{' '}
+                
                 <Dropdown locations={locations} getLocation={getLocation}/>
                 <div className="queue-data">There are this many people in line</div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col text-center">
+                            <Button className="text-center" size="lg" variant="primary" onClick={handleClick}>
+                                {inQueue ? "Cancel" : "Queue up"}
+                            </Button>{' '}
+                        </div>
+                    </div>
+                </div>
             </ Container>
         </main>
     )
