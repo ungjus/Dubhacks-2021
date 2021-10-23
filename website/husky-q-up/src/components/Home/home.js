@@ -5,19 +5,17 @@ import {
     Route,
     Link
   } from "react-router-dom";
-  
+import { Button } from 'react-bootstrap';
 
-const Main = () => {
-    return(<main>
-        <h1>hello world!</h1>
-    </main>)
-}
 
-export default Main
 
 const Home = () => {
+    let newPerson = () => {
+        console.log('click');
+    }
     return(<main>
         <h1>Home page</h1>
+        <Button variant="primary" onClick={newPerson}>Q Up Gamer</Button>{' '}
     </main>)
 }
 export default Home;
