@@ -6,6 +6,6 @@ import Home from './components/Home/home'
 
 
 ReactDOM.render(
-    <Home/>,
+    <Main/>,
   document.getElementById('root')
 );
