@@ -1,5 +1,6 @@
 import psycopg2
 from psycopg2 import sql
+import pandas as pd
 from config_helper import config_sql
 
 
@@ -37,9 +38,9 @@ def create_tables(conn):
         """
         CREATE TABLE pagliacci_historical (
             id serial primary key,
-            date DATE,
+            date TEXT,
             military_time_hour decimal,
-            number_of_people decimal,
+            average_number_of_people decimal,
             minutes_spent_per_person decimal
         )
         """,
@@ -54,9 +55,9 @@ def create_tables(conn):
         """
         CREATE TABLE lander_desk_historical (
             id serial primary key,
-            date DATE,
+            date TEXT,
             military_time_hour decimal,
-            number_of_people decimal,
+            average_number_of_people decimal,
             minutes_spent_per_person decimal
         )
         """,
@@ -123,7 +124,7 @@ def add_historical_data(conn, table_name, data):
         with conn.cursor() as cur:
             # Place data in table
             cur.execute(sql.SQL("""Insert into {}
-                (date, military_time_hour, number_of_people, minutes_per_person) 
+                (date, military_time_hour, average_number_of_people, minutes_spent_per_person) 
                 VALUES(%s, %s, %s, %s)""").format(sql.Identifier(table_name)),
                         [data[0], data[1], data[2], data[3]])
             # close communication with the PostgreSQL database server
@@ -134,6 +135,33 @@ def add_historical_data(conn, table_name, data):
         print(error)
 
 
+def grab_historical_data(conn, table_name):
+    data = pd.DataFrame(columns=['id',
+                                 'date',
+                                 'military_time_hour',
+                                 'average_number_of_people',
+                                 'minutes_spent_per_person'])
+    try:
+        # Get connection cursor
+        with conn.cursor() as cur:
+            # Gather all table data
+            cur.execute(sql.SQL("SELECT * FROM {};").format(sql.Identifier(table_name)))
+            row = cur.fetchone()
+            count = 0
+            while row is not None:
+                if row:
+                    data.loc[count] = row
+                    count = count + 1
+                row = cur.fetchone()
+        # close communication with the PostgreSQL database server
+        cur.close()
+        # Commit the changes
+        conn.commit()
+    except (Exception, psycopg2.DatabaseError) as error:
+        print(error)
+    return data
+
+
 def add_one_person_to_line(conn, table_name, data):
     try:
         # Get connection cursor
@@ -141,7 +169,7 @@ def add_one_person_to_line(conn, table_name, data):
             # Place data in table
             cur.execute(sql.SQL("""Insert into {}
                         (givenName, familyName, Email) VALUES(%s,%s,%s)""").format(sql.Identifier(table_name)),
-                        data[0], data[1], data[2])
+                        [data[0], data[1], data[2]])
             # close communication with the PostgreSQL database server
             cur.close()
             # Commit the changes
@@ -169,9 +197,9 @@ def check_number_in_line(conn, table_name, email):
         # Get connection cursor
         with conn.cursor() as cur:
             # Remove first person in line
-            cur.execute(sql.SQL("""SELECT number_in_line from {} 
-                WHERE email = %s""").format(sql.Identifier(table_name)), [[email]])
-            number_in_line = cur.fetchone()
+            cur.execute(sql.SQL("""SELECT line_number from {} 
+                WHERE email = %s""").format(sql.Identifier(table_name)), [email])
+            number_in_line = cur.fetchone()[0]
             # close communication with the PostgreSQL database server
             cur.close()
             # Commit the changes
