@@ -8,6 +8,7 @@ import {
 
 import Home from '../Home/home'
 import About from '../About/about'
+import Footer from '../Footer/footer'
 
 const Main = () => {
     return(<Router>
@@ -29,6 +30,7 @@ const Main = () => {
                 <About/>
             </Route>
         </Switch>
+        <Footer/>
     </Router>)
 }
 
