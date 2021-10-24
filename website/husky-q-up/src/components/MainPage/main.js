@@ -18,7 +18,7 @@ import { Nav, Navbar, Container } from 'react-bootstrap';
 const Main = () => {
     const [profile, setProfile] = useState(null);
     const [locations, setLocations] = useState(['lander', 'local point']);
-    const [userData, setUserData] = useState({});
+    const [userData, setUserData] = useState(null);
     const [selectedLocation, setSelectedLocation] = useState("");
 
     const socket =  sio("http://localhost:4040");
@@ -60,7 +60,7 @@ const Main = () => {
     }
 
     return(<Router>
-        <NavBar getUserData={getUserData}/>
+        <NavBar getUserData={getUserData} userData = {userData}/>
 
         <Switch>
             <Route exact path="/">
