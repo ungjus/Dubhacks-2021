@@ -1,6 +1,6 @@
 import React from 'react';
 import Dropdown from '../Dropdown/dropdown';
-import { Container } from 'react-bootstrap';
+import { Button, Container } from 'react-bootstrap';
 
 const Admin = ({ locations, getLocation, getTableData, table }) => {
     const columns = [{heading: "ID", property: "position"}, {heading: "First Name", property: "fname"},  {heading: "Last Name", property: "lname"}, {heading: "Email", property: "email"}]
@@ -80,6 +80,17 @@ const Admin = ({ locations, getLocation, getTableData, table }) => {
                     getLocation={getLocation}
                     getTableData={getTableData}
                 />
+                <br/>
+                <div className="container">
+                    <div className="row">
+                        <div class="col text-center">
+                            <Button id="button-style" onClick={console.log('click')}>
+                                Dequeue
+                            </Button>{' '}
+                        </div>
+                    </div>
+                </div>
+                <br/>
                 <div className="table">
                     {table && showTable()}
                 </div>
