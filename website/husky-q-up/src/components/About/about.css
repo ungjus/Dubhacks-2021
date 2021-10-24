@@ -10,11 +10,16 @@
     align-items: center;
     margin: 15px;
     height: 400px;
-    width: 300px;
+    width: 270px;
 }
 
 img {   
     height: 200px;
-
+    max-width: 270px;
 }
 
+.card section {
+    margin-top: 20%;
+    margin-bottom: auto;
+    text-align: center;
+}
