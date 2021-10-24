@@ -1,23 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Dropdown from '../Dropdown/dropdown';
 import { Button, Container } from 'react-bootstrap';
 
-const Admin = ({ locations, getLocation, getTableData, table }) => {
+const Admin = ({ locations, getLocation, getTableData, table, removeUser, adminLocation }) => {
     const columns = [{heading: "ID", property: "position"}, {heading: "First Name", property: "fname"},  {heading: "Last Name", property: "lname"}, {heading: "Email", property: "email"}]
 
+
+    // const [betterTable, setBetterTable] = useState([])
+    let bettererTable = [];
+    const [value, setValue] = useState(0);
+
     const formatTable = () => {
-        let betterTable = []; 
+        
 
         for (let i = 0; i < table[0].length; i++) {
-            betterTable.push({
+            bettererTable.push({
                                 position: table[0][i], 
                                 fname: table[1][i], 
                                 lname: table[2][i], 
                                 email: table[3][i]
                             });
         }
-
-        return betterTable;
+        // setBetterTable(bettererTable);
+        
+        return bettererTable;
     }
 
     const showTable = () => {
@@ -36,6 +42,15 @@ const Admin = ({ locations, getLocation, getTableData, table }) => {
     </table>);
     }
 
+    const handleClick = () => {
+        let result = {email: bettererTable[0].email, location: adminLocation};
+        console.log(result);
+        removeUser(result);
+        // bettererTable = bettererTable.filter(x => x.email !== result.email);
+        setValue(value + 1);
+        getTableData(adminLocation);
+    }
+
     return(
         <div>
             <Container>
@@ -50,7 +65,7 @@ const Admin = ({ locations, getLocation, getTableData, table }) => {
                 <div className="container">
                     <div className="row">
                         <div class="col text-center">
-                            <Button id="button-style" onClick={console.log('click')}>
+                            <Button id="button-style" onClick={handleClick}>
                                 Dequeue
                             </Button>{' '}
                         </div>

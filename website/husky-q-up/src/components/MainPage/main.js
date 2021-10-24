@@ -22,6 +22,7 @@ const Main = () => {
     const [queueData, setQueueData] = useState(0);
     const [graph, setGraph] = useState(null);
     const [table, setTable] = useState(null);
+    const [adminLocation, setAdminLocation] = useState("");
 
     const socket =  sio("http://localhost:4040");
 
@@ -55,9 +56,8 @@ const Main = () => {
     //     });
     // }, [selectedLocation])
 
-
-    // FIX THIS HAN PLS IT NO WORK HELP
     const getTableData = (loc) => {
+        setAdminLocation(loc);
         socket.emit("Send Table Data", loc)
         socket.on("Get Table Data", (tableData) => {
             // console.log(tableData);
@@ -102,8 +102,8 @@ const Main = () => {
         socket.emit("New Person", updated); 
     }
 
-    const removeUser = () => {
-        socket.emit("Remove Person", userData); 
+    const removeUser = (data = userData) => {
+        socket.emit("Remove Person", data); 
     }
 
     return(<Router>
@@ -131,6 +131,8 @@ const Main = () => {
                     getLocation={getLocation}
                     getTableData={getTableData}
                     table={table}
+                    adminLocation={adminLocation}
+                    removeUser={removeUser}
                 />
             </Route>
         </Switch>
