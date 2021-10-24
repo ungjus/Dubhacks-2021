@@ -69,6 +69,7 @@ def send_location():
 @sio.on("Get Number People")
 def get_num_people(location):
     print(location)
+    num_in_line = check_number_of_people_in_line(conn, location)
 
 
 if __name__ == '__main__':
