@@ -1,6 +1,7 @@
-img {
+#google-pfp {
     border-radius: 50%;
     max-width: 25px;
+    max-height: 25px;
     margin-left: 5px;
 }
 

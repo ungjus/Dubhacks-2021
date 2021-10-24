@@ -27,7 +27,7 @@ const NavBar = ({ getUserData, userData }) => {
                         {userData === null ? <Login getUserData={getUserData}/> :
                         (<Navbar.Text>
                             Signed in as: {userData.name}
-                            <img src={userData.imageUrl}></img>
+                            <img id="google-pfp" src={userData.imageUrl}></img>
                         </Navbar.Text>)}
                         
                     </Nav>
