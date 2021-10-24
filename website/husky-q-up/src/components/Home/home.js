@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import { Button, Container } from 'react-bootstrap';
-import sio from "socket.io-client";
 import Dropdown from '../Dropdown/dropdown';
 import QueueInfo from '../QueueInfo/QueueInfo';
 import './home.css';
@@ -34,7 +33,7 @@ const Home = ({ locations, sendUserData, removeUser, getLocation, selectedLocati
             <Container>
                 <header>
                     <h1 id="custom-h1">Welcome to Husky Q Up!</h1>
-                    <p id="header-slogan"><em>Q it up huskeies!</em></p>
+                    <p id="header-slogan"><em>Dont get tangled up in lines, use Husky Q Up!</em></p>
                 </header>
                 <div className="steps-container">
                     <p className="instructions"><br/>1. Sign in with your UW email.</p> 
