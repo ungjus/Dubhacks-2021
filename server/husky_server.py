@@ -38,6 +38,7 @@ def add_person(profile):
     print(givenName)
     print(familyName)
     print(location)
+
     print("Your number is:")
     print(number_in_line)
     print("Number of people in line:")
@@ -69,8 +70,13 @@ def send_location():
 @sio.on("Get Number People")
 def get_num_people(location):
     print(location)
-    num_in_line = check_number_of_people_in_line(conn, location)
-
+    if location == "pagliaccis":
+        table_name = "pagliacci_current"
+    else:
+        table_name = "lander_desk_current"
+    num_in_line = check_number_of_people_in_line(conn, table_name)
+    print("num people", num_in_line)
+    sio.emit("Number People", num_in_line)
 
 if __name__ == '__main__':
     print('hello world')
