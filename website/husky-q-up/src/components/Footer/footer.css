@@ -2,7 +2,7 @@ footer{
     margin-top: 1rem;
     padding: 1rem;
     background-color: #B1D4E0;
-    position: fixed;
+    background-attachment: scroll;
     bottom: 0;
     left: 0;
     width: 100%;
