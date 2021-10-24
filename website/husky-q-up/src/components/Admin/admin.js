@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Dropdown from '../Dropdown/dropdown';
 import { Button, Container } from 'react-bootstrap';
 import './admins.css'
+import setting from './settings-icon.png';
 
 const Admin = ({ locations, getLocation, getTableData, table, removeUser, adminLocation }) => {
     const columns = [{heading: "ID", property: "position"}, {heading: "First Name", property: "fname"},  {heading: "Last Name", property: "lname"}, {heading: "Email", property: "email"}]
@@ -60,6 +61,7 @@ const Admin = ({ locations, getLocation, getTableData, table, removeUser, adminL
         (<div>
             <Container>
                 <h1 id="custom-h1">Admin Page!</h1>
+                <img id="settings" src={setting}></img>
                 <Dropdown 
                     id="admin"
                     locations={locations}
