@@ -15,7 +15,6 @@ import NavBar from '../Navbar/navbar'
 import './main.css';
 
 const Main = () => {
-    const [profile, setProfile] = useState(null);
     const [locations, setLocations] = useState([]);
     const [userData, setUserData] = useState(null);
     const [selectedLocation, setSelectedLocation] = useState("");
@@ -47,15 +46,6 @@ const Main = () => {
         });
         console.log("remove get locations socky");
     }, []);
-
-
-    // useEffect(() => {
-    //     console.log("TURN off socket");
-    //     return () => socket.off('Number People', (numPeople) => {
-    //         console.log(numPeople);
-    //         setNumPeople(numPeople);
-    //     });
-    // }, [selectedLocation])
 
     const getTableData = (loc) => {
         setAdminLocation(loc);

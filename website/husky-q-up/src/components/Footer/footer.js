@@ -10,7 +10,7 @@ const Footer = () => (
           alt="Husky Q Up logo"
       />
     </Link>
-    <p>&copy; Husky Q Up</p>
+    <p>&copy; Husky Q Up 2021</p>
   </footer>
 );
 

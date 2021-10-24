@@ -1,6 +1,5 @@
 import React from 'react';
 import './about.css';
-import hanrat from './hanrat.png';
 import han from './han.jpeg'
 import bryce from './bryce.jpeg'
 import CJ from './tim.jpeg'
@@ -32,7 +31,7 @@ const About = () => {
                 <h2>Meet the Team</h2>
                 <div id="card-container">
                     <section className="card">
-                        <img src={justin}></img>
+                        <img src={justin} alt="Justin Ung"></img>
                         <section>
                             <h2>Justin Ung</h2>
                             <p>Full-stack Developer</p>
@@ -40,7 +39,7 @@ const About = () => {
                     </section>
 
                     <section className="card">
-                        <img src={han}></img>
+                        <img src={han} alt="Han Nguyen"></img>
                         <section>
                             <h2>Han Nguyen</h2>
                             <p>Front-end Devloper and UX Designer</p>
@@ -48,7 +47,7 @@ const About = () => {
                     </section>
 
                     <section className="card">
-                        <img src={CJ}></img>
+                        <img src={CJ} alt="Caesar Tuguinay"></img>
                         <section>
                             <h2>Caesar Tuguinay</h2>
                             <p>Back-end Developer and Data Scientist</p>
@@ -56,7 +55,7 @@ const About = () => {
                     </section>
 
                     <section className="card">
-                        <img src={bryce}></img>
+                        <img src={bryce} alt="Bryce Nguyen"></img>
                         <section>
                             <h2>Bryce Nguyen</h2>
                             <p>Front-end Developer</p>
