@@ -27,4 +27,12 @@ h2 {
 #settings {
     max-width: 40px;
     max-height: 40px;
+    padding: 5px;
+}
+
+#settings:hover {
+    cursor: pointer;
+    border: solid 1px;
+    border-color: #e39291;
+    border-radius: 10%;
 }
