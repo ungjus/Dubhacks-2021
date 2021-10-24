@@ -3,15 +3,6 @@ import Select from 'react-select';
 
 const Dropdown = ({ locations, getLocation, getLocationData }) => {
 
-    // generate options for dropdown list
-    // generateOptions = () => {
-    //     let options = [];
-    //     Object.entries(this.props.buildings).forEach(([key, val]) => {
-    //         options.push({value: key.toString(), label: val});
-    //     });
-    //     return options;
-    // };
-
     const generateOptions = () => {
         let options = [];
 
@@ -25,11 +16,6 @@ const Dropdown = ({ locations, getLocation, getLocationData }) => {
         //console.log(options);
         return options;
     }
-
-    // const options = [
-    //     {value: "lander", label: "Lander Desk"},
-    //     {value: "lopo", label: "Local Point"}
-    // ];
 
     const handleChange = (loc) => {
         console.log('location picked');   

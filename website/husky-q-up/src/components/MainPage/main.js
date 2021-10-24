@@ -31,6 +31,11 @@ const Main = () => {
             // console.log(locations);
             setLocations(loc_list);
         });
+        socket.emit("Send Table Data", 'lander_desk')
+        socket.on("Get Table Data", (tableData) => {
+            console.log("got table data")
+            console.log(tableData);
+        });
         console.log("remove get locations socky");
     }, []);
 
@@ -44,6 +49,13 @@ const Main = () => {
     // }, [selectedLocation])
 
 
+    // FIX THIS HAN PLS IT NO WORK HELP
+    const getTableData = (loc) => {
+        socket.emit("Send Table Data")
+        socket.on("Get Table Data", (tableData) => {
+            console.log(tableData);
+        })
+    }
 
     const getLocation = (loc) => {
         console.log("update location", loc.value);
@@ -63,11 +75,6 @@ const Main = () => {
         socket.emit("Send Graph", loc.value);
         socket.on("Get Graph", (graph) => {
             console.log("got graph!")
-            console.log(graph)
-            console.log('x data')
-            console.log(graph.x)
-            console.log('x data')
-            console.log(graph.y)
             setGraph(graph);
         })
     }
@@ -113,7 +120,12 @@ const Main = () => {
                 <About/>
             </Route>
             <Route path="/admin">
-                <Admin />
+                <Admin 
+                    locations={locations}
+                    getLocation={getLocation}
+                    getTableData={getTableData}
+                    selectedLocation={selectedLocation}
+                />
             </Route>
         </Switch>
         <Footer/>
