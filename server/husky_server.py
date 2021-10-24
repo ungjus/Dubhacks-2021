@@ -27,7 +27,9 @@ def add_person(profile):
         table_name = "pagliacci_current"
     else:
         table_name = "lander_desk_current"
-    add_one_person_to_line(conn, table_name, [givenName, familyName, email])
+    print(table_name)
+    future_number_in_line = check_number_in_line(conn, table_name, email)
+    add_one_person_to_line(conn, table_name, [future_number_in_line, givenName, familyName, email])
     number_in_line = check_number_in_line(conn, table_name, email)
     sio.emit('Number People', number_in_line)
     print("Your number is:")
@@ -47,6 +49,7 @@ def remove_person(profile):
         table_name = "pagliacci_current"
     else:
         table_name = "lander_desk_current"
+    print(table_name)
     remove_specific_person(conn, table_name, email)
     print("Number of people in line:")
     print(check_number_of_people_in_line(conn, table_name))
