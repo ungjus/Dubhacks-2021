@@ -12,13 +12,13 @@ import About from '../About/about'
 import Admin from '../Admin/admin'
 import Footer from '../Footer/footer'
 import NavBar from '../Navbar/navbar'
-import Plot from "react-plotly.js";
+// import Plot from "react-plotly.js";
 // import Plotly from "plotly.js"
 // import createPlotlyComponent from 'react-plotly.js/factory';
 // const Plot = createPlotlyComponent(Plotly);
 
 
-// import './main.css';
+import './main.css';
 
 const Main = () => {
     const [profile, setProfile] = useState(null);
@@ -37,15 +37,15 @@ const Main = () => {
             // console.log(locations);
             setLocations(loc_list);
         });
-        socket.emit("Test Graph");
-        socket.on("Get Graph", (graph) => {
-            console.log("got graphs")
-            console.log(graph)
-            console.log('data')
-            console.log(Object.values(graph))
-            setGraph(graph);
-        })
-        console.log("remove get locations socky");
+        // socket.emit("Test Graph");
+        // socket.on("Get Graph", (graph) => {
+        //     console.log("got graphs")
+        //     console.log(graph)
+        //     console.log('data')
+        //     console.log(Object.values(graph))
+        //     setGraph(graph);
+        // })
+        // console.log("remove get locations socky");
     }, []);
 
 

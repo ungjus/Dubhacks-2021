@@ -1,14 +1,9 @@
 .info-container {
     display: flex;
     flex-direction: column;
-    background-color: #0C2D48;
-    margin-left: auto;
-    margin-right: auto;
     margin-top: 2rem;
-    width: 50%;
-    height: 50%; 
-    color: white;
-    padding: 1rem;
+    align-items: center;
+    color: black;
 }
 
 

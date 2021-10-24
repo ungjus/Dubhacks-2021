@@ -8,7 +8,6 @@ const QueueInfo = ({ selectedLocation, numPeople }) => {
         <div className="info-container">
             {selectedLocation}
             <p>Number of people in line:</p>
-            <p>5</p>
             <p>People here: {numPeople}</p>
         </ div>
     )
