@@ -2,8 +2,9 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import { Nav, Navbar, Container, Header } from 'react-bootstrap';
 import Login from '../Login/login';
+import './navbar.css'
 
-const NavBar = ({ getUserData }) => {
+const NavBar = ({ getUserData, userData }) => {
 
 
     return(
@@ -17,7 +18,12 @@ const NavBar = ({ getUserData }) => {
                     <Nav.Link as={Link} to="/">Home</Nav.Link>
                     <Nav.Link as={Link} to="/about">About</Nav.Link>
                     <Nav.Link as={Link} to="/admin">Admin</Nav.Link>
-                    <Login getUserData={getUserData}/>
+                    {userData === null ? <Login getUserData={getUserData}/> :
+                    (<Navbar.Text>
+                        Signed in as: {userData.name}
+                        <img src={userData.imageUrl}></img>
+                    </Navbar.Text>)}
+                    
                 </Nav>
             </Navbar.Collapse>
         </Container>
