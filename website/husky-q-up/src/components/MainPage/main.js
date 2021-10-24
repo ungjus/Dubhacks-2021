@@ -23,6 +23,7 @@ const Main = () => {
     const [graph, setGraph] = useState(null);
     const [table, setTable] = useState(null);
     const [adminLocation, setAdminLocation] = useState("");
+    const [signedIn, setSignedIn] = useState(false);
 
     const socket =  sio("http://localhost:4040");
 

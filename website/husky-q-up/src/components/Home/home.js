@@ -5,7 +5,7 @@ import QueueInfo from '../QueueInfo/QueueInfo';
 import './home.css';
 
 
-const Home = ({ locations, sendUserData, removeUser, getLocation, selectedLocation, getTableData, queueData, setQueueData, graph }) => {
+const Home = ({ locations, sendUserData, removeUser, getLocation, selectedLocation, getTableData, queueData, setQueueData, graph, signedIn }) => {
     const [inQueue, setInQueue] = useState(false);
 
     const handleClick = () => {
@@ -57,7 +57,7 @@ const Home = ({ locations, sendUserData, removeUser, getLocation, selectedLocati
                 <div className="container">
                     <div className="row">
                         <div class="col text-center">
-                            <Button id="button-style" onClick={handleClick}>
+                            <Button id="button-style" onClick={handleClick} disabled={!signedIn}>
                                 {inQueue ? "Cancel" : "Queue up"}
                             </Button>{' '}
                         </div>
