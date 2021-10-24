@@ -47,6 +47,11 @@ const Main = () => {
             console.log(graph.y)
             setGraph(graph);
         })
+        socket.emit("Send Table Data", 'lander_desk');
+        socket.on("Get Table Data", (table) => {
+            console.log("got table!")
+            console.log(table)
+        })
         console.log("remove get locations socky");
     }, []);
 
