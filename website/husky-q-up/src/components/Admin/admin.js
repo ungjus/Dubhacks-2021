@@ -69,7 +69,7 @@ const Admin = ({ locations, getLocation, getTableData, table, removeUser, adminL
                 <div className="container">
                     <div className="row">
                         <div class="col text-center">
-                            <Button id="button-style" onClick={handleClick}>
+                            <Button id="button-style" onClick={handleClick} disabled={table === null}>
                                 Dequeue
                             </Button>{' '}
                         </div>
