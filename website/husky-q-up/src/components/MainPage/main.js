@@ -52,7 +52,7 @@ const Main = () => {
         setUserData(updated);
 
         console.log('sent user data to server', updated);
-        socket.emit("New Person", userData); 
+        socket.emit("New Person", updated); 
     }
 
     const removeUser = () => {

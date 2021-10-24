@@ -31,11 +31,17 @@ def add_person(profile):
     number_in_line = check_number_in_line(conn, table_name, email)
     print(number_in_line)
 
+@sio.on("Remove Person")
+def remove_person(profile):
+    print('removed person!')
+    print(profile)
 
 @sio.on("Send Location")
 def send_location():
     print('sending locations')
     sio.emit('Get Locations', locations)
+
+
 
 
 if __name__ == '__main__':
