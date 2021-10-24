@@ -15,3 +15,8 @@ img {
 .nav-link:hover {
     color: 	black !important;
 }
+
+#logo {
+    max-width: 85px;
+    height: auto;
+}

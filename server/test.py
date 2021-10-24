@@ -2,7 +2,7 @@ from postgre import connect, create_tables, table_exists, add_historical_data, a
 from postgre import remove_first_person, check_number_in_line, drop_table, check_number_of_people_in_line
 from postgre import remove_specific_person
 from number_generator import predict_amount_of_time_spent, json_graphs, add_historical_lander_data_for_range_of_dates
-from number_generator import add_historical_pag_data_for_range_of_dates
+from number_generator import add_historical_pag_data_for_range_of_dates, create_arrays
 import datetime
 
 x = datetime.datetime.now().strftime("%x")
@@ -24,7 +24,7 @@ current_tables = ["pagliacci_current", "lander_desk_current"]
 #add_historical_lander_data_for_range_of_dates(conn)
 #add_historical_pag_data_for_range_of_dates(conn)
 
-json_graphs(conn)
+create_arrays(conn)
 
 #add_historical_data(conn, "lander_desk_historical", [x, 1, 10, 2])
 

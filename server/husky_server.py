@@ -6,7 +6,7 @@ from postgre import remove_first_person, check_number_in_line, drop_table, remov
 import pandas as pd
 import plotly
 import plotly.express as px
-from number_generator import json_graphs, predict_amount_of_time_spent
+from number_generator import json_graphs, predict_amount_of_time_spent, create_arrays
 
 conn = connect()
 
@@ -89,7 +89,8 @@ def get_num_people(location):
 def test_graph():
     # [fig_pag, fig_lander] = json_graphs(conn)
     # graphJSON = json.dumps(fig_lander, cls=plotly.utils.PlotlyJSONEncoder)
-    graph = {'x': [1, 2, 3], 'y': [2, 4, 6]}
+    [x_pag, y_pag, x_lander, y_lander] = create_arrays(conn)
+    graph = {'x': x_pag, 'y': y_pag}
     sio.emit("Get Graph", graph)
 
 if __name__ == '__main__':
