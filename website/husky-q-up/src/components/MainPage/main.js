@@ -15,6 +15,8 @@ import NavBar from '../Navbar/navbar'
 
 import { Nav, Navbar, Container } from 'react-bootstrap';
 
+// import './main.css';
+
 const Main = () => {
     const [profile, setProfile] = useState(null);
     const [locations, setLocations] = useState(['lander', 'local point']);
