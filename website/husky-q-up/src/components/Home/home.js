@@ -7,8 +7,10 @@ import QueueInfo from '../QueueInfo/QueueInfo';
 
 import './home.css';
 
-const Home = ({ locations, sendUserData, removeUser, getLocation, selectedLocation, getLocationData }) => {
+const Home = ({ locations, sendUserData, removeUser, getLocation, selectedLocation, getLocationData, numPeople }) => {
     const [inQueue, setInQueue] = useState(false);
+    //const []
+
     // const socket =  sio("http://localhost:4040");
 
     // let newPerson = () => {
@@ -27,16 +29,16 @@ const Home = ({ locations, sendUserData, removeUser, getLocation, selectedLocati
             <Container>
                 <h1>Home page</h1>
                 
-                <Dropdown locations={locations} getLocation={getLocation}/>
+                <Dropdown locations={locations} getLocation={getLocation} getLocationData={getLocationData}/>
                 <QueueInfo 
                     selectedLocation={selectedLocation} 
-                    getLocationData={getLocationData}
-                    />
-
+                    numPeople={numPeople}    
+                />
+                <br/>
                 <div class="container">
                     <div class="row">
                         <div class="col text-center">
-                            <Button className="text-center" size="lg" variant="primary" onClick={handleClick}>
+                            <Button id="button-style" onClick={handleClick}>
                                 {inQueue ? "Cancel" : "Queue up"}
                             </Button>{' '}
                         </div>

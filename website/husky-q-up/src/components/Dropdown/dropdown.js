@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Select from 'react-select';
 
-const Dropdown = ({ locations, getLocation }) => {
+const Dropdown = ({ locations, getLocation, getLocationData }) => {
 
     // generate options for dropdown list
     // generateOptions = () => {
@@ -22,7 +22,7 @@ const Dropdown = ({ locations, getLocation }) => {
             }
         });
 
-        console.log(options);
+        //console.log(options);
         return options;
     }
 
@@ -31,9 +31,10 @@ const Dropdown = ({ locations, getLocation }) => {
     //     {value: "lopo", label: "Local Point"}
     // ];
 
-    const handleChange = (val) => {
-         console.log('location picked');   
-        getLocation(val);
+    const handleChange = (loc) => {
+        console.log('location picked');   
+        getLocation(loc);
+        getLocationData();
     }
 
 
