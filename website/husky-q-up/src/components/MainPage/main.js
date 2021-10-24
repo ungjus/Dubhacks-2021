@@ -108,9 +108,9 @@ const Main = () => {
     }
 
     return(
-        <main className="Site">
+        <main className="page-container">
             <Router>
-                <div className="Site-Content">
+                <div className="content-wrap">
                     <NavBar getUserData={getUserData} userData = {userData} setSignedIn= {setSignedIn}/>
                     <Switch>
                         <Route exact path="/">
