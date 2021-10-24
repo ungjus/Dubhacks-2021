@@ -37,6 +37,14 @@ const Main = () => {
         setSelectedLocation(loc.value);
     }
 
+    const getLocationData = (selectedLocation) => {
+        socket.emit("Get Number People", selectedLocation);
+
+        socket.on("Number People", (numPeople) => {
+            console.log(numPeople)
+        }); 
+    }
+
     const getUserData = (userData) => {
         // store it in state
         console.log('got user data', userData);
@@ -70,6 +78,7 @@ const Main = () => {
                     removeUser={removeUser}
                     getLocation={getLocation}
                     selectedLocation={selectedLocation}
+                    getLocationData={getLocationData}
                 />
             </Route>
             <Route path="/about">
