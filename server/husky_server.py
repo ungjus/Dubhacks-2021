@@ -89,7 +89,7 @@ def get_num_people(location):
         historical_table_name = "lander_historical"
 
     num_in_line = check_number_of_people_in_line(conn, table_name)
-    predicted_time = predict_amount_of_time_spent(conn, historical_table_name, table_name, email)
+    predicted_time = predict_amount_of_time_spent_without_email(conn, historical_table_name, table_name)
     table_data = {'numberInLine': [num_in_line],'predictedTime':[predicted_time]}
     print("num people", num_in_line)
     sio.emit("Queue Data", table_data)
