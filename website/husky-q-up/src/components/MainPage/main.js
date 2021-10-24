@@ -12,8 +12,11 @@ import About from '../About/about'
 import Admin from '../Admin/admin'
 import Footer from '../Footer/footer'
 import NavBar from '../Navbar/navbar'
+import Plot from "react-plotly.js";
+// import Plotly from "plotly.js"
+// import createPlotlyComponent from 'react-plotly.js/factory';
+// const Plot = createPlotlyComponent(Plotly);
 
-import { Nav, Navbar, Container } from 'react-bootstrap';
 
 const Main = () => {
     const [profile, setProfile] = useState(null);
@@ -21,6 +24,7 @@ const Main = () => {
     const [userData, setUserData] = useState(null);
     const [selectedLocation, setSelectedLocation] = useState("");
     const [numPeople, setNumPeople] = useState(0);
+    const [graph, setGraph] = useState(null);
 
     const socket =  sio("http://localhost:4040");
 
@@ -31,6 +35,14 @@ const Main = () => {
             // console.log(locations);
             setLocations(loc_list);
         });
+        socket.emit("Test Graph");
+        socket.on("Get Graph", (graph) => {
+            console.log("got graphs")
+            console.log(graph)
+            console.log('data')
+            console.log(Object.values(graph))
+            setGraph(graph);
+        })
     }, []);
 
     const getLocation = (loc) => {
@@ -70,7 +82,7 @@ const Main = () => {
 
     return(<Router>
         <NavBar getUserData={getUserData} userData = {userData}/>
-
+        {/* <Plot data={graph.data} /> */}
         <Switch>
             <Route exact path="/">
                 <Home 
