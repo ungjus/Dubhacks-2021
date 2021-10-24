@@ -6,60 +6,45 @@
     color: black;
 }
 
-/* .info-box {
+.info-box {
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
+    width: 100%;
+    justify-content: space-evenly;
 }
 
-.info-card {
+.left-container, .right-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.circle {
+    display: flex;
+    flex-direction: column;
     background-color: #0C2D48;
-    width: 300px;
-    height: 300px;
+    border-radius: 5%;
+    width: 250px;
+    height: 250px;
     color: white;
+    align-items: center;
+}
+
+.data {
+    font-size: 120px;
+}
+
+.data-extra {
+    font-size: 20px;
 }
 
 .label {
-    font-size: 20px;
-    margin-top: 30px;
+    font-size: 30px;
 }
 
-.data {
-    font-size: 80px;
-    margin-top: 10px;
-} */
-
-.info-box {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.left-box, .right-box {
-    display: flex;
-    flex-direction: column;
-    width: 35%;
-    height: 150px;
-    color: black;
-}
-
-.left-box {
-    border-right: solid gray 2px;
-    text-align: end;
-    padding-right: 25px;
-}
-
-.right-box {
-    border-left: solid gray 2px;
-    text-align: start;
-    padding-left: 25px;
-}
-
-.data {
-    font-size: 60px;
-    align-self: center;
+.pun {
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 40px;
 }

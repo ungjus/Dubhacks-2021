@@ -36,7 +36,7 @@ const Home = ({ locations, sendUserData, removeUser, getLocation, selectedLocati
                     <p id="header-slogan"><em>Dont get tangled up in lines, use Husky Q Up!</em></p>
                 </header>
                 <div className="steps-container">
-                    <p className="instructions"><br/>1. Sign in with your UW email.</p> 
+                    <p className="instructions">1. Sign in with your UW email.</p> 
                     <p className="instructions">2. Select a location and see the number of people in line. </p>
                     <p className="instructions">3. Then decide to enter the queue up to not</p>
                 </div>
