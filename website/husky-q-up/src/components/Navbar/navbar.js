@@ -25,13 +25,8 @@ const NavBar = ({ getUserData, userData, setSignedIn }) => {
                         <Nav.Link as={Link} to="/admin">Admin</Nav.Link>
                         {userData === null ? <Login getUserData={getUserData} setSignedIn={setSignedIn}/> :
                         (<Navbar.Text>
-<<<<<<< HEAD
                             <span id="signed-in">Signed in as:</span> <span id="username">{userData.name}</span>
                             <img id="google-pfp" src={userData.imageUrl}></img>
-=======
-                            Signed in as: {userData.name}
-                            <img id="google-pfp" src={userData.imageUrl} alt="Google Logo"></img>
->>>>>>> 1d93b48aecf32b2883dccbd0b2165119c4690fb0
                         </Navbar.Text>)}
                         
                     </Nav>
