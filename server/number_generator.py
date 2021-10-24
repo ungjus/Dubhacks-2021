@@ -114,6 +114,9 @@ def create_arrays(conn, table_name):
     x = list(df["military_time_hour"])
     y = list(df["average_number_of_people"])
 
+    for i in range(len(y)):
+        y[i] = float(y[i])
+
     return [x, y]
 
 
