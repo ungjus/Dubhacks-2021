@@ -93,6 +93,10 @@ def test_graph():
     graph = {'x': x_pag, 'y': y_pag}
     sio.emit("Get Graph", graph)
 
+@sio.on("Send Table Data")
+def get_table_data():
+    sio.emit("Get Table Data", table)
+
 if __name__ == '__main__':
     print('hello world')
     sio.run(app, host=HOST_IP, port=HOST_PORT)

@@ -40,18 +40,18 @@ const Home = ({ locations, sendUserData, removeUser, getLocation, selectedLocati
                     numPeople={numPeople}    
                 />
                 <Plot
-        data={[
-          {
-            x: [1, 2, 3],
-            y: [2, 6, 3],
-            type: 'scatter',
-            mode: 'lines+markers',
-            marker: {color: 'red'},
-          },
-          {type: 'bar', x: [1, 2, 3], y: [2, 5, 3]},
-        ]}
-        layout={ {width: 320, height: 240, title: 'A Fancy Plot'} }
-      />
+                    data={[
+                    {
+                        x: [1, 2, 3],
+                        y: [2, 6, 3],
+                        type: 'scatter',
+                        mode: 'lines+markers',
+                        marker: {color: 'red'},
+                    },
+                    {type: 'bar', x: [1, 2, 3], y: [2, 5, 3]},
+                    ]}
+                    layout={ {width: 500, height: 500, title: 'A Fancy Plot'} }
+                />
                 <br/>
                 <div class="container">
                     <div class="row">

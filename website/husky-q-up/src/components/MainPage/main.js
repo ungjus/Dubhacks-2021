@@ -39,10 +39,12 @@ const Main = () => {
         });
         socket.emit("Test Graph");
         socket.on("Get Graph", (graph) => {
-            console.log("got graphs")
+            console.log("got graph!")
             console.log(graph)
-            console.log('data')
-            console.log(Object.keys(graph))
+            console.log('x data')
+            console.log(graph.x)
+            console.log('x data')
+            console.log(graph.y)
             setGraph(graph);
         })
         console.log("remove get locations socky");
