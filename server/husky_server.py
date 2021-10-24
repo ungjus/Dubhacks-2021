@@ -87,9 +87,10 @@ def get_num_people(location):
 
 @sio.on("Test Graph")
 def test_graph():
-    [fig_pag, fig_lander] = json_graphs(conn)
-    graphJSON = json.dumps(fig_lander, cls=plotly.utils.PlotlyJSONEncoder)
-    sio.emit("Get Graph", graphJSON)
+    # [fig_pag, fig_lander] = json_graphs(conn)
+    # graphJSON = json.dumps(fig_lander, cls=plotly.utils.PlotlyJSONEncoder)
+    graph = {'x': [1, 2, 3], 'y': [2, 4, 6]}
+    sio.emit("Get Graph", graph)
 
 if __name__ == '__main__':
     print('hello world')
