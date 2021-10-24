@@ -14,7 +14,7 @@ HOST_IP = 'localhost'
 HOST_PORT = '4040'
 
 app = Flask(__name__)
-sio = SocketIO(app, cors_allowed_origins="*", async_mode='threading')
+sio = SocketIO(app, cors_allowed_origins="*")
 
 locations = ['pagliaccis', 'lander_desk']
 
