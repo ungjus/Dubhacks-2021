@@ -7,8 +7,8 @@ const Admin = ({ locations, getLocation, getTableData, table, removeUser, adminL
 
 
     // const [betterTable, setBetterTable] = useState([])
+    const [loggedIn, setLoggedIn] = useState(false);
     let bettererTable = [];
-    const [value, setValue] = useState(0);
 
     const formatTable = () => {
         
@@ -47,12 +47,16 @@ const Admin = ({ locations, getLocation, getTableData, table, removeUser, adminL
         console.log(result);
         removeUser(result);
         // bettererTable = bettererTable.filter(x => x.email !== result.email);
-        setValue(value + 1);
         getTableData(adminLocation);
     }
 
+    const handleSubmit = () => {
+        setLoggedIn(true);
+    }
+
     return(
-        <div>
+        loggedIn ? 
+        (<div>
             <Container>
                 <h1 id="custom-h1">Admin Page!</h1>
                 <Dropdown 
@@ -76,7 +80,17 @@ const Admin = ({ locations, getLocation, getTableData, table, removeUser, adminL
                     {table && showTable()}
                 </div>
             </Container>
-        </ div>
+        </div>) : 
+        
+        (<Container>
+            <form onSubmit={handleSubmit}>
+                <label>
+                 Password:
+                 <input type="password" name="name" />
+                </label>
+                <input type="submit" value="Submit" />
+            </form>
+        </Container>)
     )
 }
 export default Admin;

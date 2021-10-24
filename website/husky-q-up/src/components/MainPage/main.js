@@ -23,6 +23,7 @@ const Main = () => {
     const [graph, setGraph] = useState(null);
     const [table, setTable] = useState(null);
     const [adminLocation, setAdminLocation] = useState("");
+    const [signedIn, setSignedIn] = useState(false);
 
     const socket =  sio("http://localhost:4040");
 
@@ -107,7 +108,7 @@ const Main = () => {
     }
 
     return(<Router>
-        <NavBar getUserData={getUserData} userData = {userData}/>
+        <NavBar getUserData={getUserData} userData = {userData} setSignedIn={setSignedIn}/>
         {/* <Plot data={graph.data} /> */}
         <Switch>
             <Route exact path="/">
@@ -120,6 +121,7 @@ const Main = () => {
                     queueData={queueData}
                     setQueueData={setQueueData}
                     graph={graph}
+                    signedIn={signedIn}
                 />
             </Route>
             <Route path="/about">

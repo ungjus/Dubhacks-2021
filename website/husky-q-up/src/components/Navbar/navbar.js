@@ -4,7 +4,7 @@ import { Nav, Navbar, Container } from 'react-bootstrap';
 import Login from '../Login/login';
 import './navbar.css'
 import logo from '../Navbar/logo.png'
-const NavBar = ({ getUserData, userData }) => {
+const NavBar = ({ getUserData, userData, setSignedIn }) => {
 
 
     return(
@@ -23,7 +23,7 @@ const NavBar = ({ getUserData, userData }) => {
                         <Nav.Link as={Link} to="/">Home</Nav.Link>
                         <Nav.Link as={Link} to="/about">About</Nav.Link>
                         <Nav.Link as={Link} to="/admin">Admin</Nav.Link>
-                        {userData === null ? <Login getUserData={getUserData}/> :
+                        {userData === null ? <Login getUserData={getUserData} setSignedIn={setSignedIn}/> :
                         (<Navbar.Text>
                             Signed in as: {userData.name}
                             <img id="google-pfp" src={userData.imageUrl}></img>
