@@ -2,6 +2,10 @@ import React from 'react';
 import './queue-info.css';
 import Plot from "react-plotly.js";
 import { Container } from 'react-bootstrap';
+<<<<<<< HEAD
+=======
+
+>>>>>>> c7d486cd09a8a0384a018fe9742a059722b6bac1
 
 const QueueInfo = ({ selectedLocation, queueData, graph }) => {
     // let numPeople = getLocationData(selectedLocation);

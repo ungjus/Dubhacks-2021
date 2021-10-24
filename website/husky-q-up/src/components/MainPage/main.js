@@ -23,6 +23,7 @@ const Main = () => {
     const [graph, setGraph] = useState(null);
     const [table, setTable] = useState(null);
     const [adminLocation, setAdminLocation] = useState("");
+    const [signedIn, setSignedIn] = useState(false);
 
     const socket =  sio("http://localhost:4040");
 
@@ -106,38 +107,44 @@ const Main = () => {
         socket.emit("Remove Person", data); 
     }
 
-    return(<Router>
-        <NavBar getUserData={getUserData} userData = {userData}/>
-        {/* <Plot data={graph.data} /> */}
-        <Switch>
-            <Route exact path="/">
-                <Home 
-                    locations={locations}
-                    sendUserData={sendUserData}
-                    removeUser={removeUser}
-                    getLocation={getLocation}
-                    selectedLocation={selectedLocation}
-                    queueData={queueData}
-                    setQueueData={setQueueData}
-                    graph={graph}
-                />
-            </Route>
-            <Route path="/about">
-                <About/>
-            </Route>
-            <Route path="/admin">
-                <Admin 
-                    locations={locations}
-                    getLocation={getLocation}
-                    getTableData={getTableData}
-                    table={table}
-                    adminLocation={adminLocation}
-                    removeUser={removeUser}
-                />
-            </Route>
-        </Switch>
-        <Footer/>
-    </Router>)
+    return(
+        <main className="page-container">
+            <Router>
+                <div className="content-wrap">
+                    <NavBar getUserData={getUserData} userData = {userData} setSignedIn= {setSignedIn}/>
+                    <Switch>
+                        <Route exact path="/">
+                            <Home 
+                                locations={locations}
+                                sendUserData={sendUserData}
+                                removeUser={removeUser}
+                                getLocation={getLocation}
+                                selectedLocation={selectedLocation}
+                                queueData={queueData}
+                                setQueueData={setQueueData}
+                                graph={graph}
+                                signedIn={signedIn}
+                            />
+                        </Route>
+                        <Route path="/about">
+                            <About/>
+                        </Route>
+                        <Route path="/admin">
+                            <Admin 
+                                locations={locations}
+                                getLocation={getLocation}
+                                getTableData={getTableData}
+                                table={table}
+                                adminLocation={adminLocation}
+                                removeUser={removeUser}
+                            />
+                        </Route>
+                    </Switch>
+                </div>
+                <Footer/>
+            </Router>
+        </main>
+    )
 }
 
 export default Main;

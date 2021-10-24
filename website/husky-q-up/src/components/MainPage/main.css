@@ -8,3 +8,13 @@
     text-align: center;
     color: #0C2D48;
 }
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content-wrap {
+    flex: 1;
+}

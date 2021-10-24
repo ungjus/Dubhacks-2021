@@ -1,10 +1,9 @@
 footer{
-    margin-top: 1rem;
+    margin-top: 30px;
     padding: 1rem;
     background-color: #B1D4E0;
-    background-attachment: scroll;
+    position: relative;
     bottom: 0;
-    left: 0;
     width: 100%;
 }
 

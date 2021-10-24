@@ -5,11 +5,12 @@ const clientId = "925806163579-kmv3bckvc1m6j8phdmi07mtbhlde7tb1.apps.googleuserc
 
 // let profile;
 
-const Login = ({ getUserData }) => {
+const Login = ({ getUserData, setSignedIn }) => {
     // user state? 
     
     const respond = (res) => {
         getUserData(res.profileObj);
+        setSignedIn(true);
     }
 
     // function: after login, grab user data and call callback function in main
