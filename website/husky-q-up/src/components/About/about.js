@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {Container, Row, Col} from 'react-bootstrap'
 
 const About = () => {
     return(<main>
@@ -10,7 +10,13 @@ const About = () => {
         </section>
         <section>
             <h2>Meet the Team</h2>
-            
+            <Container>
+                <Row>
+                    <Col>1 of 1</Col>
+                    <Col>1 of 1</Col>
+                    <Col>1 of 1</Col>
+                </Row>
+            </Container>
         </section>
         
     </main>)

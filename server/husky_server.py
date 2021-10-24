@@ -88,11 +88,11 @@ def get_num_people(location):
     sio.emit("Number People", num_in_line)
 
 
-@sio.on("Test Graph")
+@sio.on("Send Graph")
 def test_graph(location):
     # [fig_pag, fig_lander] = json_graphs(conn)
     # graphJSON = json.dumps(fig_lander, cls=plotly.utils.PlotlyJSONEncoder)
-    if table_name == "pagliaccis":
+    if location == "pagliaccis":
         table_name = "pagliacci_current"
     else:
         table_name = "lander_desk_current"

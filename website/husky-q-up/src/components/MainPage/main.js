@@ -66,7 +66,7 @@ const Main = () => {
             socket.off("Number People");
         });
         
-        socket.emit("Test Graph");
+        socket.emit("Send Graph", loc.value);
         socket.on("Get Graph", (graph) => {
             console.log("got graph!")
             console.log(graph)
