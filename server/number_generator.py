@@ -104,36 +104,24 @@ def json_graphs(conn):
     return [fig_pag, fig_lander]
 
 
-def create_arrays(conn):
-    dataframe_pag = grab_historical_data(conn, "pagliacci_historical")
-    dataframe_lander = grab_historical_data(conn, "lander_desk_historical")
+def create_arrays(conn, table_name):
+    df = grab_historical_data(conn, table_name)
 
-    dataframe_pag = dataframe_pag[["average_number_of_people",
-                                   "military_time_hour"]].sort_values(by=["military_time_hour"])
-    dataframe_pag["military_time_hour"] = dataframe_pag["military_time_hour"].apply(time_convert)
+    df = df[["average_number_of_people",
+             "military_time_hour"]].sort_values(by=["military_time_hour"])
+    df["military_time_hour"] = df["military_time_hour"].apply(time_convert)
 
-    dataframe_lander = dataframe_lander[["average_number_of_people",
-                                         "military_time_hour"]].sort_values(by=["military_time_hour"])
-    dataframe_lander["military_time_hour"] = dataframe_lander["military_time_hour"].apply(time_convert)
+    x = list(df["military_time_hour"])
+    y = list(df["average_number_of_people"])
 
-    x_pag = list(dataframe_pag["military_time_hour"])
-    y_pag = list(dataframe_pag["average_number_of_people"])
-    for i in range(len(y_pag)):
-        y_pag[i] = float(y_pag[i])
-    x_lander = list(dataframe_lander["military_time_hour"])
-    y_lander = list(dataframe_lander["average_number_of_people"])
-    for i in range(len(y_lander)):
-        y_lander[i] = float(y_lander[i])
-
-    return [x_pag, y_pag, x_lander, y_lander]
+    return [x, y]
 
 
 def create_arrays_current(conn, table_name):
     dataframe = grab_current_data(conn, table_name)
 
     dataframe = dataframe[["line_number", "givenName",
-                                   "familyName", "email"]].sort_values(by=["line_number"])
-
+                           "familyName", "email"]].sort_values(by=["line_number"])
 
     a = list(dataframe["line_number"])
     b = list(dataframe["givenName"])

@@ -89,11 +89,15 @@ def get_num_people(location):
 
 
 @sio.on("Test Graph")
-def test_graph():
+def test_graph(location):
     # [fig_pag, fig_lander] = json_graphs(conn)
     # graphJSON = json.dumps(fig_lander, cls=plotly.utils.PlotlyJSONEncoder)
-    [x_pag, y_pag, x_lander, y_lander] = create_arrays(conn)
-    graph = {'x': x_pag, 'y': y_pag}
+    if table_name == "pagliaccis":
+        table_name = "pagliacci_current"
+    else:
+        table_name = "lander_desk_current"
+    [x, y] = create_arrays(conn, table_name)
+    graph = {'x': x, 'y': y}
     sio.emit("Get Graph", graph)
 
 
