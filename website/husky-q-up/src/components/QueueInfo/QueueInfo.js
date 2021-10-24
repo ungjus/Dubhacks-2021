@@ -14,7 +14,7 @@ const QueueInfo = ({ selectedLocation, queueData, graph }) => {
             <div className="info-container">
                 {selectedLocation && <div className="info-box">
                     <div className="left-container">
-                        <p className="label" >Number of people in line</p>
+                        <p className="label" >Number of People in Line</p>
                         <div className="circle">
                             <p className="data" >{numPeople}</p>
                             <p className="data-extra">people</p>
@@ -26,7 +26,7 @@ const QueueInfo = ({ selectedLocation, queueData, graph }) => {
                         <p className="label" >Estimated Wait Time</p> 
                         <div className="circle">
                             <p className="data" >{predictedTime}</p>
-                            <p className="data-extra">time units</p>
+                            <p className="data-extra">Minutes</p>
                         </div>
                         <p className="pun">Yes, this is the wait. We are not squidding!</p>
                     </div>
