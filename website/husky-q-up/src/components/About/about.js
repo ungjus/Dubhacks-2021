@@ -34,7 +34,8 @@ const About = () => {
                         <img src={justin} alt="Justin Ung"></img>
                         <section>
                             <h2>Justin Ung</h2>
-                            <p>Full-stack Developer</p>
+                            <p className="info">(he/him)<br/><em>Informatics</em></p>
+                            <p>Full-stack Developer and <br/> Project Manager</p>
                         </section>
                     </section>
 
@@ -42,7 +43,8 @@ const About = () => {
                         <img src={han} alt="Han Nguyen"></img>
                         <section>
                             <h2>Han Nguyen</h2>
-                            <p>Front-end Devloper and UX Designer</p>
+                            <p className="info">(she/her)<br/><em>Computer Science</em></p>
+                            <p>Front-end Devloper and <br/>UX Designer</p>
                         </section>
                     </section>
 
@@ -50,7 +52,9 @@ const About = () => {
                         <img src={CJ} alt="Caesar Tuguinay"></img>
                         <section>
                             <h2>Caesar Tuguinay</h2>
-                            <p>Back-end Developer and Data Scientist</p>
+                            <p className="info">(he/him)<br/><em>Math</em></p>
+                            
+                            <p>Back-end Developer and <br/>Data Scientist</p>
                         </section>
                     </section>
 
@@ -58,7 +62,8 @@ const About = () => {
                         <img src={bryce} alt="Bryce Nguyen"></img>
                         <section>
                             <h2>Bryce Nguyen</h2>
-                            <p>Front-end Developer</p>
+                            <p className="info">(he/him)<br/><em>Computer Science</em></p>
+                            <p>Front-end Developer and <br/> Software Developer</p>
                         </section>
                     </section>
 
