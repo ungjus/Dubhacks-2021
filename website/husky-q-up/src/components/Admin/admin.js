@@ -20,40 +20,6 @@ const Admin = ({ locations, getLocation, getTableData, table }) => {
         return betterTable;
     }
 
-    const displayTable = () => {
-        let betterTable = formatTable();
-        console.log(betterTable);
-
-        let htmlArray = betterTable.map(row => {
-            console.log(row.fname);
-            <div>
-                <span>position: {row.position}</span>
-                <span>first name: {row.fname}</span>
-                <span>lname: {row.lname}</span>
-                <span>email: {row.email}</span>
-            </div>
-        });
-
-        console.log(htmlArray);
-
-        return htmlArray.map(element => {
-            <div  className="row">
-                {element}
-            </div>
-        });
-    }
-
-    const displayRow = (row) => {
-        return (
-        <div>
-            <span>position: {row.position}</span>
-            <span>first name: {row.fname}</span>
-            <span>lname: {row.lname}</span>
-            <span>email: {row.email}</span>
-        </div>
-        );
-    }
-
     const showTable = () => {
         return(
         <table className='table'>
