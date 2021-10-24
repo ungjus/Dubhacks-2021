@@ -2,7 +2,7 @@ import json
 from flask import Flask, render_template
 from flask_socketio import SocketIO, send, emit
 from postgre import connect, create_tables, table_exists, add_historical_data, add_one_person_to_line
-from postgre import remove_first_person, check_number_in_line, drop_table, remove_specific_person
+from postgre import remove_first_person, check_number_in_line, drop_table, remove_specific_person, check_number_of_people_in_line
 
 conn = connect()
 
@@ -31,6 +31,7 @@ def add_person(profile):
     future_number_in_line = check_number_in_line(conn, table_name, email)
     add_one_person_to_line(conn, table_name, [future_number_in_line, givenName, familyName, email])
     number_in_line = check_number_in_line(conn, table_name, email)
+    sio.emit('Number People', number_in_line)
     print("Your number is:")
     print(number_in_line)
     print("Number of people in line:")
@@ -58,6 +59,10 @@ def remove_person(profile):
 def send_location():
     print('sending locations')
     sio.emit('Get Locations', locations)
+
+@sio.on("Get Number People")
+def get_num_people(location):
+    print(location)
 
 
 if __name__ == '__main__':

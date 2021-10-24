@@ -7,7 +7,7 @@ import QueueInfo from '../QueueInfo/QueueInfo';
 
 import './home.css';
 
-const Home = ({ locations, sendUserData, removeUser, getLocation, selectedLocation }) => {
+const Home = ({ locations, sendUserData, removeUser, getLocation, selectedLocation, getLocationData }) => {
     const [inQueue, setInQueue] = useState(false);
     // const socket =  sio("http://localhost:4040");
 
@@ -28,7 +28,10 @@ const Home = ({ locations, sendUserData, removeUser, getLocation, selectedLocati
                 <h1>Home page</h1>
                 
                 <Dropdown locations={locations} getLocation={getLocation}/>
-                <QueueInfo selectedLocation={selectedLocation} />
+                <QueueInfo 
+                    selectedLocation={selectedLocation} 
+                    getLocationData={getLocationData}
+                    />
 
                 <div class="container">
                     <div class="row">
