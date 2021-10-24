@@ -17,11 +17,15 @@ const Home = ({ locations, sendUserData, removeUser, getLocation, selectedLocati
     return(
         <main>
             <Container>
-                <h1 id="custom-h1">Welcome to Husky Q Up!</h1>
-                <p id="instructions">
-                    Sign in with your UW email. Select a location to see the number of people in line. 
-                    Then queue up to see how blah blah blah blah
-                </p>
+                <header>
+                    <h1 id="custom-h1">Welcome to Husky Q Up!</h1>
+                    <p id="header-slogan"><em>Q it up huskeies!</em></p>
+                </header>
+                <div className="steps-container">
+                    <p className="instructions"><br/>1. Sign in with your UW email.</p> 
+                    <p className="instructions">2. Select a location and see the number of people in line. </p>
+                    <p className="instructions">3. Then decide to enter the queue up to not</p>
+                </div>
 
                 <Dropdown locations={locations} getLocation={getLocation} getLocationData={getLocationData}/>
                 <QueueInfo 
