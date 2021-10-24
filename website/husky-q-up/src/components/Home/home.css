@@ -10,10 +10,14 @@
     color: #0C2D48;
 } */
 
-#instructions {
-    text-align: center;
-    margin-bottom: 3rem;
+.instructions {
+    justify-content: left;
+    text-align: left;
+    margin-bottom: 2rem;
     font-size: 20px;
+}
+#header-slogan {
+    text-align: center;
 }
 
 #button-style {
@@ -30,4 +34,10 @@
 .plot-container.plotly {
     margin-left: auto;
     margin-right: auto;
+}
+.steps-container {
+    margin-left: 30%;
+    margin-right:auto;
+    text-align: center;
+    width:50vw;
 }

@@ -6,7 +6,7 @@ import QueueInfo from '../QueueInfo/QueueInfo';
 import './home.css';
 
 
-const Home = ({ locations, sendUserData, removeUser, getLocation, selectedLocation, getTableData, numPeople, graph }) => {
+const Home = ({ locations, sendUserData, removeUser, getLocation, selectedLocation, getTableData, queueData, graph }) => {
     const [inQueue, setInQueue] = useState(false);
 
     const handleClick = () => {
@@ -17,11 +17,15 @@ const Home = ({ locations, sendUserData, removeUser, getLocation, selectedLocati
     return(
         <main>
             <Container>
-                <h1 id="custom-h1">Welcome to Husky Q Up!</h1>
-                <p id="instructions">
-                    Sign in with your UW email. Select a location to see the number of people in line. 
-                    Then queue up to see how blah blah blah blah
-                </p>
+                <header>
+                    <h1 id="custom-h1">Welcome to Husky Q Up!</h1>
+                    <p id="header-slogan"><em>Q it up huskeies!</em></p>
+                </header>
+                <div className="steps-container">
+                    <p className="instructions"><br/>1. Sign in with your UW email.</p> 
+                    <p className="instructions">2. Select a location and see the number of people in line. </p>
+                    <p className="instructions">3. Then decide to enter the queue up to not</p>
+                </div>
 
                 <Dropdown 
                     id="user"
@@ -31,7 +35,7 @@ const Home = ({ locations, sendUserData, removeUser, getLocation, selectedLocati
                 />
                 <QueueInfo 
                     selectedLocation={selectedLocation} 
-                    numPeople={numPeople}
+                    queueData={queueData}
                     graph={graph}    
                 />
                 

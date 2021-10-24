@@ -30,7 +30,7 @@ def add_person(profile):
         historical_table_name = "pagliacci_historical"
     else:
         table_name = "lander_desk_current"
-        historical_table_name = "lander_historical"
+        historical_table_name = "lander_desk_historical"
     print(table_name)
     future_number_in_line = check_number_of_people_in_line(conn, table_name)
     if future_number_in_line is None:
@@ -77,8 +77,7 @@ def send_location():
     sio.emit('Get Locations', locations)
 
 
-# @sio.on("Get Number People")
-@sio.on("Get Queue Data")
+@sio.on("Get Location Data")
 def get_num_people(location):
     print(location)
     if location == "pagliaccis":
@@ -86,19 +85,17 @@ def get_num_people(location):
         historical_table_name = "pagliacci_historical"
     else:
         table_name = "lander_desk_current"
-        historical_table_name = "lander_historical"
+        historical_table_name = "lander_desk_historical"
 
     num_in_line = check_number_of_people_in_line(conn, table_name)
     predicted_time = predict_amount_of_time_spent_without_email(conn, historical_table_name, table_name)
-    table_data = {'numberInLine': [num_in_line],'predictedTime':[predicted_time]}
-    print("num people", num_in_line)
+    table_data = {'numberInLine': num_in_line,'predictedTime': float(predicted_time)}
+    print("table data", table_data)
     sio.emit("Queue Data", table_data)
 
 
 @sio.on("Send Graph")
-def test_graph(location):
-    # [fig_pag, fig_lander] = json_graphs(conn)
-    # graphJSON = json.dumps(fig_lander, cls=plotly.utils.PlotlyJSONEncoder)
+def send_graph(location):
     if location == "pagliaccis":
         table_name = "pagliacci_historical"
     else:
