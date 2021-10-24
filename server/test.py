@@ -2,7 +2,7 @@ from postgre import connect, create_tables, table_exists, add_historical_data, a
 from postgre import remove_first_person, check_number_in_line, drop_table, check_number_of_people_in_line
 from postgre import remove_specific_person
 from number_generator import predict_amount_of_time_spent, json_graphs, add_historical_lander_data_for_range_of_dates
-from number_generator import add_historical_pag_data_for_range_of_dates, create_arrays
+from number_generator import add_historical_pag_data_for_range_of_dates, create_arrays, create_arrays_current
 import datetime
 
 x = datetime.datetime.now().strftime("%x")
@@ -47,7 +47,7 @@ add_one_person_to_line(conn, "lander_desk_current", [future_number_lander, 'NotH
     remove_first_person(conn, "pagliacci_current")
     remove_first_person(conn, "lander_desk_current")"""
 
-
+create_arrays_current(conn)
 
 print(check_number_of_people_in_line(conn, "pagliacci_current"))
 print(check_number_of_people_in_line(conn, "lander_desk_current"))

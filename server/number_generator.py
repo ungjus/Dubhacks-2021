@@ -1,6 +1,6 @@
 from postgre import connect, create_tables, table_exists, add_historical_data, add_one_person_to_line
 from postgre import remove_first_person, check_number_in_line, drop_table, grab_historical_data
-from postgre import check_number_in_line
+from postgre import check_number_in_line, grab_current_data
 import json
 import plotly
 import plotly.express as px
@@ -126,6 +126,21 @@ def create_arrays(conn):
         y_lander[i] = float(y_lander[i])
 
     return [x_pag, y_pag, x_lander, y_lander]
+
+
+def create_arrays_current(conn, table_name):
+    dataframe = grab_current_data(conn, table_name)
+
+    dataframe = dataframe[["line_number", "givenName",
+                                   "familyName", "email"]].sort_values(by=["line_number"])
+
+
+    a = list(dataframe["line_number"])
+    b = list(dataframe["givenName"])
+    c = list(dataframe["familyName"])
+    d = list(dataframe["email"])
+
+    return [a, b, c, d]
 
 
 def predict_amount_of_time_spent(conn, historical_table_name, current_table_name, email):
