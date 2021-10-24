@@ -7,6 +7,7 @@ const QueueInfo = ({ selectedLocation, getLocationData }) => {
     return(
         <div className="queue-info">
             {selectedLocation}
+            <p>People here: {getLocationData(selectedLocation)}</p>
         </ div>
     )
 }

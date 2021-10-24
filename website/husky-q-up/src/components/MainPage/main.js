@@ -20,6 +20,7 @@ const Main = () => {
     const [locations, setLocations] = useState(['lander', 'local point']);
     const [userData, setUserData] = useState(null);
     const [selectedLocation, setSelectedLocation] = useState("");
+    const [numPeople, setNumPeople] = useState(0);
 
     const socket =  sio("http://localhost:4040");
 
@@ -41,7 +42,7 @@ const Main = () => {
         socket.emit("Get Number People", selectedLocation);
 
         socket.on("Number People", (numPeople) => {
-            console.log(numPeople)
+            setNumPeople(numPeople);
         }); 
     }
 
