@@ -2,11 +2,12 @@ import json
 from flask import Flask, render_template
 from flask_socketio import SocketIO, send, emit
 from postgre import connect, create_tables, table_exists, add_historical_data, add_one_person_to_line
-from postgre import remove_first_person, check_number_in_line, drop_table, remove_specific_person, check_number_of_people_in_line
+from postgre import remove_first_person, check_number_in_line, drop_table, remove_specific_person, \
+    check_number_of_people_in_line
 import pandas as pd
 import plotly
 import plotly.express as px
-from number_generator import json_graphs, predict_amount_of_time_spent, create_arrays
+from number_generator import json_graphs, predict_amount_of_time_spent, create_arrays, create_arrays_current
 
 conn = connect()
 
@@ -74,6 +75,7 @@ def send_location():
     print('sending locations')
     sio.emit('Get Locations', locations)
 
+
 @sio.on("Get Number People")
 def get_num_people(location):
     print(location)
@@ -85,6 +87,7 @@ def get_num_people(location):
     print("num people", num_in_line)
     sio.emit("Number People", num_in_line)
 
+
 @sio.on("Test Graph")
 def test_graph():
     # [fig_pag, fig_lander] = json_graphs(conn)
@@ -93,9 +96,17 @@ def test_graph():
     graph = {'x': x_pag, 'y': y_pag}
     sio.emit("Get Graph", graph)
 
+
 @sio.on("Send Table Data")
-def get_table_data():
-    sio.emit("Get Table Data", table)
+def get_table_data(table_name):
+    if table_name == "pagliaccis":
+        table_name = "pagliacci_current"
+    else:
+        table_name = "lander_desk_current"
+    [a, b, c, d] = create_arrays_current(conn, table_name)
+
+    sio.emit("Get Table Data", [a, b, c, d])
+
 
 if __name__ == '__main__':
     print('hello world')
