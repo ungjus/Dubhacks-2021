@@ -57,7 +57,7 @@ const Home = ({ locations, sendUserData, removeUser, getLocation, selectedLocati
                 <div className="container">
                     <div className="row">
                         <div class="col text-center">
-                            <Button id="button-style" onClick={handleClick} disabled={!signedIn}>
+                            <Button id="button-style" onClick={handleClick} disabled={!signedIn || selectedLocation === ""}>
                                 {inQueue ? "Cancel" : "Queue up"}
                             </Button>{' '}
                         </div>
