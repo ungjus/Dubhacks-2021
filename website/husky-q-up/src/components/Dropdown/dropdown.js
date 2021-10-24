@@ -34,7 +34,6 @@ const Dropdown = ({ locations, getLocation, getLocationData }) => {
     const handleChange = (loc) => {
         console.log('location picked');   
         getLocation(loc);
-        getLocationData();
     }
 
 
