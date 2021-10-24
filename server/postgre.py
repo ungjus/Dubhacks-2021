@@ -184,6 +184,50 @@ def remove_first_person(conn, table_name):
         with conn.cursor() as cur:
             # Remove first person in line
             cur.execute(sql.SQL("""Delete from {} where line_number = 1""").format(sql.Identifier(table_name)))
+            cur.execute(sql.SQL("""Drop table if exists newtable"""))
+            cur.execute(sql.SQL("""CREATE TABLE newtable (
+                    line_number serial primary key,
+                    givenName TEXT,
+                    familyName TEXT,
+                    email TEXT)"""))
+            cur.execute(sql.SQL("""Insert into newtable (givenName, familyName, Email)
+                                SELECT givenName, familyName, Email FROM {} 
+                                ORDER BY {}.line_number
+                                """).format(sql.Identifier(table_name), sql.Identifier(table_name)))
+            cur.execute(sql.SQL("""Alter table IF exists {} Rename TO archive""").format(sql.Identifier(table_name),
+                                                                                         sql.Identifier(table_name)))
+            cur.execute(sql.SQL("""Alter table IF exists newtable Rename TO {}""").
+                        format(sql.Identifier(table_name)))
+            cur.execute(sql.SQL("""Drop table archive"""))
+            # close communication with the PostgreSQL database server
+            cur.close()
+            # Commit the changes
+            conn.commit()
+    except(Exception, psycopg2.DatabaseError) as error:
+        print(error)
+
+
+def remove_specific_person(conn, table_name, email):
+    try:
+        # Get connection cursor
+        with conn.cursor() as cur:
+            # Remove first person in line
+            cur.execute(sql.SQL("""Delete from {} where email = %s""").format(sql.Identifier(table_name)), [email])
+            cur.execute(sql.SQL("""Drop table if exists newtable"""))
+            cur.execute(sql.SQL("""CREATE TABLE newtable (
+                    line_number serial primary key,
+                    givenName TEXT,
+                    familyName TEXT,
+                    email TEXT)"""))
+            cur.execute(sql.SQL("""Insert into newtable (givenName, familyName, Email)
+                                SELECT givenName, familyName, Email FROM {} 
+                                ORDER BY {}.line_number
+                                """).format(sql.Identifier(table_name), sql.Identifier(table_name)))
+            cur.execute(sql.SQL("""Alter table IF exists {} Rename TO archive""").format(sql.Identifier(table_name),
+                                                                                         sql.Identifier(table_name)))
+            cur.execute(sql.SQL("""Alter table IF exists newtable Rename TO {}""").
+                        format(sql.Identifier(table_name)))
+            cur.execute(sql.SQL("""Drop table archive"""))
             # close communication with the PostgreSQL database server
             cur.close()
             # Commit the changes
@@ -196,7 +240,7 @@ def check_number_in_line(conn, table_name, email):
     try:
         # Get connection cursor
         with conn.cursor() as cur:
-            # Remove first person in line
+            # Check a person's number in line
             cur.execute(sql.SQL("""SELECT line_number from {} 
                 WHERE email = %s""").format(sql.Identifier(table_name)), [email])
             number_in_line = cur.fetchone()[0]
@@ -205,5 +249,21 @@ def check_number_in_line(conn, table_name, email):
             # Commit the changes
             conn.commit()
             return number_in_line
+    except(Exception, psycopg2.DatabaseError) as error:
+        print(error)
+
+
+def check_number_of_people_in_line(conn, table_name):
+    try:
+        # Get connection cursor
+        with conn.cursor() as cur:
+            # Check number of people in line
+            cur.execute(sql.SQL("""SELECT COUNT(*) from {}""").format(sql.Identifier(table_name)))
+            number_of_people_in_line = cur.fetchone()[0]
+            # close communication with the PostgreSQL database server
+            cur.close()
+            # Commit the changes
+            conn.commit()
+            return number_of_people_in_line
     except(Exception, psycopg2.DatabaseError) as error:
         print(error)
