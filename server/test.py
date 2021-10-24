@@ -24,13 +24,18 @@ current_tables = ["pagliacci_current", "lander_desk_current"]
 #add_historical_lander_data_for_range_of_dates(conn)
 #add_historical_pag_data_for_range_of_dates(conn)
 
-create_arrays(conn)
+#create_arrays(conn)
 
 #add_historical_data(conn, "lander_desk_historical", [x, 1, 10, 2])
 
-#future_number = check_number_of_people_in_line(conn, "pagliacci_current")
-
-#add_one_person_to_line(conn, "pagliacci_current", [future_number, 'Han', 'Nguyen', 'han3@gmail.com'])
+"""future_number_pag = check_number_of_people_in_line(conn, "pagliacci_current")
+add_one_person_to_line(conn, "pagliacci_current", [future_number_pag, 'Han', 'Nguyen', 'han3@gmail.com'])
+future_number_pag = check_number_of_people_in_line(conn, "pagliacci_current")
+add_one_person_to_line(conn, "pagliacci_current", [future_number_pag, 'NotHan', 'Nguyen', 'nothan4@gmail.com'])
+future_number_lander = check_number_of_people_in_line(conn, "lander_desk_current")
+add_one_person_to_line(conn, "lander_desk_current", [future_number_lander, 'Han', 'Nguyen', 'han3@gmail.com'])
+future_number_lander = check_number_of_people_in_line(conn, "lander_desk_current")
+add_one_person_to_line(conn, "lander_desk_current", [future_number_lander, 'NotHan', 'Nguyen', 'nothan4@gmail.com'])"""
 
 #print(predict_amount_of_time_spent(conn, "pagliacci_historical", "pagliacci_current", 'han3@gmail.com'))
 
@@ -38,8 +43,12 @@ create_arrays(conn)
 
 #remove_specific_person(conn, "pagliacci_current", 'han@gmail.com')
 
-#for i in range(0,20):
-    #remove_first_person(conn, "pagliacci_historical")
+"""for i in range(0,20):
+    remove_first_person(conn, "pagliacci_current")
+    remove_first_person(conn, "lander_desk_current")"""
 
-#print(check_number_of_people_in_line(conn, "pagliacci_current"))
+
+
+print(check_number_of_people_in_line(conn, "pagliacci_current"))
+print(check_number_of_people_in_line(conn, "lander_desk_current"))
 
