@@ -34,11 +34,11 @@ const Home = ({ locations, sendUserData, removeUser, getLocation, selectedLocati
                     selectedLocation={selectedLocation} 
                     numPeople={numPeople}    
                 />
-
+                <br/>
                 <div class="container">
                     <div class="row">
                         <div class="col text-center">
-                            <Button className="text-center" size="lg" variant="primary" onClick={handleClick}>
+                            <Button id="button-style" onClick={handleClick}>
                                 {inQueue ? "Cancel" : "Queue up"}
                             </Button>{' '}
                         </div>

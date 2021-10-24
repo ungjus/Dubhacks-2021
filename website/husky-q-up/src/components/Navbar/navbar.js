@@ -11,7 +11,7 @@ const NavBar = ({ getUserData, userData }) => {
 
     <Navbar className="navbar" expand="lg">
         <Container>
-            <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+            <Navbar.Brand as={Link} to="/">Husky Q Up</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
                 <Nav >
