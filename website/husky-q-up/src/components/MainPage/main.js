@@ -27,34 +27,36 @@ const Main = () => {
         socket.emit("Send Location");
         socket.on("Get Locations", (loc_list) => {
             console.log('Got locations!');
-            console.log(locations);
+            // console.log(locations);
             setLocations(loc_list);
         });
     }, []);
 
     const getLocation = (loc) => {
-        console.log(loc.value);
+        // console.log(loc.value);
         setSelectedLocation(loc.value);
     }
 
     const getUserData = (userData) => {
         // store it in state
-        console.log('in sendUserData');
-        console.log(userData);
+        console.log('got user data', userData);
         setUserData(userData);
         // pass down as prop to home
     }
 
     const sendUserData = () => {
         // send to server with userData
-        userData["location"] = selectedLocation
-        console.log(userData);
+        const updated = {...userData};
+        updated.location = selectedLocation;
+        
+        setUserData(updated);
+
+        console.log('sent user data to server', updated);
         socket.emit("New Person", userData); 
     }
 
-    const updateLocation = () => {
-
-        // setLocations
+    const removeUser = () => {
+        socket.emit("Remove Person", userData); 
     }
 
     return(<Router>
@@ -62,13 +64,19 @@ const Main = () => {
 
         <Switch>
             <Route exact path="/">
-                <Home locations={locations} sendUserData={sendUserData} getLocation={getLocation}/>
+                <Home 
+                    locations={locations}
+                    sendUserData={sendUserData}
+                    removeUser={removeUser}
+                    getLocation={getLocation}
+                    selectedLocation={selectedLocation}
+                />
             </Route>
             <Route path="/about">
                 <About/>
             </Route>
             <Route path="/admin">
-                <Admin/>
+                <Admin />
             </Route>
         </Switch>
         <Footer/>

@@ -1,10 +1,8 @@
-* {
+/* * {
     box-sizing: border-box;
     margin: auto;
-}
+} */
 
 .queue-data {
     background-color: aqua;
-    width: 600px;
-    height: 500px;
 }
