@@ -6,6 +6,7 @@ from postgre import remove_first_person, check_number_in_line, drop_table, remov
 import pandas as pd
 import plotly
 import plotly.express as px
+from number_generator import json_graphs, predict_amount_of_time_spent, create_arrays
 
 conn = connect()
 
@@ -28,8 +29,10 @@ def add_person(profile):
     location = profile['location']
     if location == "pagliaccis":
         table_name = "pagliacci_current"
+        historical_table_name = "pagliacci_historical"
     else:
         table_name = "lander_desk_current"
+        historical_table_name = "lander_historical"
     print(table_name)
     future_number_in_line = check_number_of_people_in_line(conn, table_name)
     if future_number_in_line is None:
@@ -46,7 +49,8 @@ def add_person(profile):
     print(number_in_line)
     print("Number of people in line:")
     print(check_number_of_people_in_line(conn, table_name))
-    #print("Predicted amount of time to wait in line:")
+    print("Predicted amount of time to wait in line:")
+    print(predict_amount_of_time_spent(conn, historical_table_name, table_name, email))
 
 
 @sio.on("Remove Person")
@@ -83,16 +87,11 @@ def get_num_people(location):
 
 @sio.on("Test Graph")
 def test_graph():
-    df = pd.DataFrame({
-        "Vegetables": ["Lettuce", "Cauliflower", "Carrots", "Lettuce", "Cauliflower", "Carrots"],
-        "Amount": [10, 15, 8, 5, 14, 25],
-        "City": ["London", "London", "London", "Madrid", "Madrid", "Madrid"]
-    })
-
-    fig = px.bar(df, x="Vegetables", y="Amount", color="City", barmode="stack")
-
-    graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
-    sio.emit("Get Graph", graphJSON)
+    # [fig_pag, fig_lander] = json_graphs(conn)
+    # graphJSON = json.dumps(fig_lander, cls=plotly.utils.PlotlyJSONEncoder)
+    [x_pag, y_pag, x_lander, y_lander] = create_arrays(conn)
+    graph = {'x': x_pag, 'y': y_pag}
+    sio.emit("Get Graph", graph)
 
 if __name__ == '__main__':
     print('hello world')

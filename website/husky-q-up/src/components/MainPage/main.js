@@ -37,15 +37,15 @@ const Main = () => {
             // console.log(locations);
             setLocations(loc_list);
         });
-        // socket.emit("Test Graph");
-        // socket.on("Get Graph", (graph) => {
-        //     console.log("got graphs")
-        //     console.log(graph)
-        //     console.log('data')
-        //     console.log(Object.values(graph))
-        //     setGraph(graph);
-        // })
-        // console.log("remove get locations socky");
+        socket.emit("Test Graph");
+        socket.on("Get Graph", (graph) => {
+            console.log("got graphs")
+            console.log(graph)
+            console.log('data')
+            console.log(Object.keys(graph))
+            setGraph(graph);
+        })
+        console.log("remove get locations socky");
     }, []);
 
 
