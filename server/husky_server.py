@@ -77,7 +77,8 @@ def send_location():
     sio.emit('Get Locations', locations)
 
 
-@sio.on("Get Number People")
+# @sio.on("Get Number People")
+@sio.on("Get Queue Data")
 def get_num_people(location):
     print(location)
     if location == "pagliaccis":
