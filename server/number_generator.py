@@ -1,6 +1,6 @@
 from postgre import connect, create_tables, table_exists, add_historical_data, add_one_person_to_line
 from postgre import remove_first_person, check_number_in_line, drop_table, grab_historical_data
-from postgre import check_number_in_line, grab_current_data
+from postgre import check_number_in_line, grab_current_data, check_number_of_people_in_line
 import json
 import plotly
 import plotly.express as px
