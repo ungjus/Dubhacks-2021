@@ -111,34 +111,35 @@ const Main = () => {
         <main className="Site">
             <Router>
                 <div className="Site-Content">
-                <NavBar getUserData={getUserData} userData = {userData}/>
-                <Switch>
-                    <Route exact path="/">
-                        <Home 
-                            locations={locations}
-                            sendUserData={sendUserData}
-                            removeUser={removeUser}
-                            getLocation={getLocation}
-                            selectedLocation={selectedLocation}
-                            queueData={queueData}
-                            setQueueData={setQueueData}
-                            graph={graph}
-                        />
-                    </Route>
-                    <Route path="/about">
-                        <About/>
-                    </Route>
-                    <Route path="/admin">
-                        <Admin 
-                            locations={locations}
-                            getLocation={getLocation}
-                            getTableData={getTableData}
-                            table={table}
-                            adminLocation={adminLocation}
-                            removeUser={removeUser}
-                        />
-                    </Route>
-                </Switch>
+                    <NavBar getUserData={getUserData} userData = {userData} setSignedIn= {setSignedIn}/>
+                    <Switch>
+                        <Route exact path="/">
+                            <Home 
+                                locations={locations}
+                                sendUserData={sendUserData}
+                                removeUser={removeUser}
+                                getLocation={getLocation}
+                                selectedLocation={selectedLocation}
+                                queueData={queueData}
+                                setQueueData={setQueueData}
+                                graph={graph}
+                                signedIn={signedIn}
+                            />
+                        </Route>
+                        <Route path="/about">
+                            <About/>
+                        </Route>
+                        <Route path="/admin">
+                            <Admin 
+                                locations={locations}
+                                getLocation={getLocation}
+                                getTableData={getTableData}
+                                table={table}
+                                adminLocation={adminLocation}
+                                removeUser={removeUser}
+                            />
+                        </Route>
+                    </Switch>
                 </div>
                 <Footer/>
             </Router>

@@ -8,7 +8,10 @@
     text-align: center;
     color: #0C2D48;
 }
-
+:root {
+    --space: 1.5em 0;
+    --space: 2em 0;
+}
 .Site {
     display: flex;
     flex-direction: column;
