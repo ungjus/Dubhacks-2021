@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import { Nav, Navbar, Container, Header } from 'react-bootstrap';
 import Login from '../Login/login';
 import './navbar.css'
+import logo from './logo.png';
 
 const NavBar = ({ getUserData, userData }) => {
 
@@ -11,7 +12,13 @@ const NavBar = ({ getUserData, userData }) => {
 
     <Navbar className="navbar" expand="lg">
         <Container>
-            <Navbar.Brand as={Link} to="/">Husky Q Up</Navbar.Brand>
+            <Navbar.Brand as={Link} to="/">
+                <img id="logo"
+                    src={logo}
+                    alt="Husky Q Up logo"
+                />
+                Husky Q Up
+            </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
                 <Nav >
