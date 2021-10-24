@@ -136,7 +136,7 @@ def create_arrays_current(conn, table_name):
 
 def predict_amount_of_time_spent(conn, historical_table_name, current_table_name, email):
     # Get military hour right now
-    military_hour = int(datetime.datetime.now().strftime("%H")) - 1
+    military_hour = int(datetime.datetime.now().strftime("%H"))
     df = grab_historical_data(conn, historical_table_name)
     df = df[["military_time_hour", "minutes_spent_per_person"]]
     df = df.loc[df["military_time_hour"] == military_hour]["minutes_spent_per_person"].values[0]
@@ -152,7 +152,7 @@ def predict_amount_of_time_spent(conn, historical_table_name, current_table_name
 
 def predict_amount_of_time_spent_without_email(conn, historical_table_name, current_table_name):
     # Get military hour right now
-    military_hour = int(datetime.datetime.now().strftime("%H")) - 1
+    military_hour = int(datetime.datetime.now().strftime("%H"))
     df = grab_historical_data(conn, historical_table_name)
     df = df[["military_time_hour", "minutes_spent_per_person"]]
     df = df.loc[df["military_time_hour"] == military_hour]["minutes_spent_per_person"].values[0]
