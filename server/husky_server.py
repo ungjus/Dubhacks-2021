@@ -29,9 +29,15 @@ def add_person(profile):
         table_name = "lander_desk_current"
     print(table_name)
     future_number_in_line = check_number_in_line(conn, table_name, email)
+    if future_number_in_line is None:
+        future_number_in_line = 0
     add_one_person_to_line(conn, table_name, [future_number_in_line, givenName, familyName, email])
     number_in_line = check_number_in_line(conn, table_name, email)
     sio.emit('Number People', number_in_line)
+    print(email)
+    print(givenName)
+    print(familyName)
+    print(location)
     print("Your number is:")
     print(number_in_line)
     print("Number of people in line:")
