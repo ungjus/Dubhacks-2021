@@ -96,12 +96,32 @@ def json_graphs(conn):
     dataframe_pag["military_time_hour"] = dataframe_pag["military_time_hour"].apply(time_convert)
 
     dataframe_lander = dataframe_lander[["average_number_of_people",
-                                   "military_time_hour"]].sort_values(by=["military_time_hour"])
+                                         "military_time_hour"]].sort_values(by=["military_time_hour"])
     dataframe_lander["military_time_hour"] = dataframe_lander["military_time_hour"].apply(time_convert)
 
     fig_pag = px.bar(dataframe_pag, x="military_time_hour", y="average_number_of_people", barmode="group")
     fig_lander = px.bar(dataframe_pag, x="military_time_hour", y="average_number_of_people", barmode="group")
     return [fig_pag, fig_lander]
+
+
+def create_arrays(conn):
+    dataframe_pag = grab_historical_data(conn, "pagliacci_historical")
+    dataframe_lander = grab_historical_data(conn, "lander_desk_historical")
+
+    dataframe_pag = dataframe_pag[["average_number_of_people",
+                                   "military_time_hour"]].sort_values(by=["military_time_hour"])
+    dataframe_pag["military_time_hour"] = dataframe_pag["military_time_hour"].apply(time_convert)
+
+    dataframe_lander = dataframe_lander[["average_number_of_people",
+                                         "military_time_hour"]].sort_values(by=["military_time_hour"])
+    dataframe_lander["military_time_hour"] = dataframe_lander["military_time_hour"].apply(time_convert)
+
+    x_pag = dataframe_pag["military_time_hour"].to_numpy()
+    y_pag = dataframe_pag["average_number_of_people"].to_numpy()
+    x_lander = dataframe_lander["military_time_hour"].to_numpy()
+    y_lander = dataframe_lander["average_number_of_people"].to_numpy()
+
+    return [x_pag, y_pag, x_lander, y_lander]
 
 
 def predict_amount_of_time_spent(conn, historical_table_name, current_table_name, email):
