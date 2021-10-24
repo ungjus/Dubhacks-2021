@@ -23,9 +23,9 @@ create_tables(conn)"""
 
 future_number = check_number_of_people_in_line(conn, "pagliacci_current")
 
-add_one_person_to_line(conn, "pagliacci_current", [future_number, 'Han', 'Nguyen', 'han2@gmail.com'])
+add_one_person_to_line(conn, "pagliacci_current", [future_number, 'Han', 'Nguyen', 'han3@gmail.com'])
 
-print(check_number_in_line(conn, "pagliacci_current", 'han2@gmail.com'))
+print(check_number_in_line(conn, "pagliacci_current", 'han3@gmail.com'))
 
 #remove_specific_person(conn, "pagliacci_current", 'han@gmail.com')
 

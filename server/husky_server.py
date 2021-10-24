@@ -28,7 +28,7 @@ def add_person(profile):
     else:
         table_name = "lander_desk_current"
     print(table_name)
-    future_number_in_line = check_number_in_line(conn, table_name, email)
+    future_number_in_line = check_number_of_people_in_line_in_line(conn, table_name, email)
     if future_number_in_line is None:
         future_number_in_line = 0
     add_one_person_to_line(conn, table_name, [future_number_in_line, givenName, familyName, email])
