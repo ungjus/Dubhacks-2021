@@ -21,6 +21,7 @@ const Main = () => {
     const [selectedLocation, setSelectedLocation] = useState("");
     const [numPeople, setNumPeople] = useState(0);
     const [graph, setGraph] = useState(null);
+    const [table, setTable] = useState(null);
 
     const socket =  sio("http://localhost:4040");
 
@@ -31,11 +32,11 @@ const Main = () => {
             // console.log(locations);
             setLocations(loc_list);
         });
-        socket.emit("Send Table Data", 'lander_desk')
-        socket.on("Get Table Data", (tableData) => {
-            console.log("got table data")
-            console.log(tableData);
-        });
+        // socket.emit("Send Table Data", 'lander_desk')
+        // socket.on("Get Table Data", (tableData) => {
+        //     console.log("got table data")
+        //     console.log(tableData);
+        // });
         console.log("remove get locations socky");
     }, []);
 
@@ -51,9 +52,10 @@ const Main = () => {
 
     // FIX THIS HAN PLS IT NO WORK HELP
     const getTableData = (loc) => {
-        socket.emit("Send Table Data")
+        socket.emit("Send Table Data", loc)
         socket.on("Get Table Data", (tableData) => {
-            console.log(tableData);
+            // console.log(tableData);
+            setTable(tableData);
         })
     }
 
@@ -130,7 +132,7 @@ const Main = () => {
                     locations={locations}
                     getLocation={getLocation}
                     getTableData={getTableData}
-                    selectedLocation={selectedLocation}
+                    table={table}
                 />
             </Route>
         </Switch>

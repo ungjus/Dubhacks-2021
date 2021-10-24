@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Select from 'react-select';
 
-const Dropdown = ({ locations, getLocation, getLocationData }) => {
+const Dropdown = ({ id, locations, getLocation, getTableData }) => {
 
     const generateOptions = () => {
         let options = [];
@@ -17,17 +17,22 @@ const Dropdown = ({ locations, getLocation, getLocationData }) => {
         return options;
     }
 
-    const handleChange = (loc) => {
-        console.log('location picked');   
+    const handleChangeUser = (loc) => {
+        console.log('location picked'); 
+        console.log(id);  
         getLocation(loc);
     }
 
+    const handleChangeAdmin = (loc) => {
+        getTableData(loc.value);
+        console.log(loc.value);
+    }
 
     return (
         <div>
             <Select
                 options={generateOptions()}
-                onChange={handleChange}
+                onChange={id === "user" ? handleChangeUser : handleChangeAdmin}
             />
         </div>
     );

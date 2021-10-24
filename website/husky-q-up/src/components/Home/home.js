@@ -6,7 +6,7 @@ import QueueInfo from '../QueueInfo/QueueInfo';
 import './home.css';
 
 
-const Home = ({ locations, sendUserData, removeUser, getLocation, selectedLocation, getLocationData, numPeople, graph }) => {
+const Home = ({ locations, sendUserData, removeUser, getLocation, selectedLocation, getTableData, numPeople, graph }) => {
     const [inQueue, setInQueue] = useState(false);
 
     const handleClick = () => {
@@ -23,7 +23,12 @@ const Home = ({ locations, sendUserData, removeUser, getLocation, selectedLocati
                     Then queue up to see how blah blah blah blah
                 </p>
 
-                <Dropdown locations={locations} getLocation={getLocation} getLocationData={getLocationData}/>
+                <Dropdown 
+                    id="user"
+                    locations={locations}
+                    getLocation={getLocation}
+                    getTableData={getTableData}
+                />
                 <QueueInfo 
                     selectedLocation={selectedLocation} 
                     numPeople={numPeople}
