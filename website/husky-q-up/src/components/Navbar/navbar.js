@@ -25,7 +25,7 @@ const NavBar = ({ getUserData, userData, setSignedIn }) => {
                         <Nav.Link as={Link} to="/admin">Admin</Nav.Link>
                         {userData === null ? <Login getUserData={getUserData} setSignedIn={setSignedIn}/> :
                         (<Navbar.Text>
-                            Signed in as: {userData.name}
+                            <span id="signed-in">Signed in as:</span> <span id="username">{userData.name}</span>
                             <img id="google-pfp" src={userData.imageUrl}></img>
                         </Navbar.Text>)}
                         
