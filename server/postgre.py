@@ -166,10 +166,12 @@ def add_one_person_to_line(conn, table_name, data):
     try:
         # Get connection cursor
         with conn.cursor() as cur:
+
             # Place data in table
             cur.execute(sql.SQL("""Insert into {}
-                        (givenName, familyName, Email) VALUES(%s,%s,%s)""").format(sql.Identifier(table_name)),
-                        [data[0], data[1], data[2]])
+                        (line_number, givenName, 
+                        familyName, Email) VALUES(%s,%s,%s,%s)""").format(sql.Identifier(table_name)),
+                        [data[0] + 1, data[1], data[2], data[3]])
             # close communication with the PostgreSQL database server
             cur.close()
             # Commit the changes
