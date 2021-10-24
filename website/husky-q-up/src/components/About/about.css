@@ -19,7 +19,13 @@ img {
 }
 
 .card section {
-    margin-top: 20%;
+    margin-top: 12%;
     margin-bottom: auto;
     text-align: center;
+}
+.info {
+    font-size: 14px;
+}
+section {
+    margin-top: 50px;
 }
