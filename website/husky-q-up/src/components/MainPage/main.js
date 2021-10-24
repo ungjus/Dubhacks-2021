@@ -67,10 +67,16 @@ const Main = () => {
         socket.emit("Get Number People", loc.value);
 
         socket.on("Number People", (numPeople) => {
+            console.log('number poeple')
             console.log(numPeople);
             setNumPeople(numPeople);
             socket.off("Number People");
         });
+
+        socket.on("Queue Data", (data) => {
+            console.log('table Data')
+            console.log(data);
+        })
         
         socket.emit("Send Graph", loc.value);
         socket.on("Get Graph", (graph) => {

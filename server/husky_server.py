@@ -37,9 +37,10 @@ def add_person(profile):
     add_one_person_to_line(conn, table_name, [future_number_in_line, givenName, familyName, email])
     number_in_line = check_number_in_line(conn, table_name, email)
     predicted_time = predict_amount_of_time_spent(conn, historical_table_name, table_name, email)
-    dic = {'numberInLine': number_in_line,
-            'predictedTime':predicted_time}
-    sio.emit('Number People', dic)
+    table_data = {'numberInLine': number_in_line, 'predictedTime': float(predicted_time)}
+    print('table data: ', table_data)
+    print(table_data)
+    sio.emit('Queue Data', table_data)
     print(email)
     print(givenName)
     print(familyName)
@@ -80,11 +81,16 @@ def get_num_people(location):
     print(location)
     if location == "pagliaccis":
         table_name = "pagliacci_current"
+        historical_table_name = "pagliacci_historical"
     else:
         table_name = "lander_desk_current"
+        historical_table_name = "lander_historical"
+
     num_in_line = check_number_of_people_in_line(conn, table_name)
+    predicted_time = predict_amount_of_time_spent(conn, historical_table_name, table_name, email)
+    table_data = {'numberInLine': [num_in_line],'predictedTime':[predicted_time]}
     print("num people", num_in_line)
-    sio.emit("Number People", num_in_line)
+    sio.emit("Queue Data", table_data)
 
 
 @sio.on("Send Graph")
