@@ -6,7 +6,7 @@ import QueueInfo from '../QueueInfo/QueueInfo';
 import './home.css';
 
 
-const Home = ({ locations, sendUserData, removeUser, getLocation, selectedLocation, getLocationData, numPeople, graph }) => {
+const Home = ({ locations, sendUserData, removeUser, getLocation, selectedLocation, getLocationData, queueData, graph }) => {
     const [inQueue, setInQueue] = useState(false);
 
     const handleClick = () => {
@@ -26,7 +26,7 @@ const Home = ({ locations, sendUserData, removeUser, getLocation, selectedLocati
                 <Dropdown locations={locations} getLocation={getLocation} getLocationData={getLocationData}/>
                 <QueueInfo 
                     selectedLocation={selectedLocation} 
-                    numPeople={numPeople}
+                    queueData={queueData}
                     graph={graph}    
                 />
                 

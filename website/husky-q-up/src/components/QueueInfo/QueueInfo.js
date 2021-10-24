@@ -2,14 +2,16 @@ import React from 'react';
 import './queue-info.css';
 import Plot from "react-plotly.js";
 
-const QueueInfo = ({ selectedLocation, numPeople, graph }) => {
+const QueueInfo = ({ selectedLocation, queueData, graph }) => {
     // let numPeople = getLocationData(selectedLocation);
-
+    console.log('queue data')
+    console.log(queueData)
+    let numPeople = queueData['numberInLine'];
+    let predictedTime = queueData['predictedTime'];
     return(
         <div className="info-container">
-            {selectedLocation}
-            <p>Number of people in line:</p>
-            <p>People here: {numPeople}</p>
+            <p>Number of people in line: {numPeople}</p>
+            <p>Time Till Front: {predictedTime}</p>
             <div className="graph-container" >
                 {console.log(graph)}
                     {graph && <Plot
