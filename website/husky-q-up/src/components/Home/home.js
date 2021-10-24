@@ -4,8 +4,9 @@ import sio from "socket.io-client";
 import Dropdown from '../Dropdown/dropdown';
 import QueueInfo from '../QueueInfo/QueueInfo';
 // import {profile} from'../Login/login';
-
 import './home.css';
+import Plot from "react-plotly.js";
+
 
 const Home = ({ locations, sendUserData, removeUser, getLocation, selectedLocation, getLocationData, numPeople }) => {
     const [inQueue, setInQueue] = useState(false);
@@ -34,6 +35,19 @@ const Home = ({ locations, sendUserData, removeUser, getLocation, selectedLocati
                     selectedLocation={selectedLocation} 
                     numPeople={numPeople}    
                 />
+                <Plot
+        data={[
+          {
+            x: [1, 2, 3],
+            y: [2, 6, 3],
+            type: 'scatter',
+            mode: 'lines+markers',
+            marker: {color: 'red'},
+          },
+          {type: 'bar', x: [1, 2, 3], y: [2, 5, 3]},
+        ]}
+        layout={ {width: 320, height: 240, title: 'A Fancy Plot'} }
+      />
                 <br/>
                 <div class="container">
                     <div class="row">

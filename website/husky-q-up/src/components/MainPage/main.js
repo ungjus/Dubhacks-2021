@@ -42,7 +42,7 @@ const Main = () => {
             console.log("got graphs")
             console.log(graph)
             console.log('data')
-            console.log(Object.values(graph))
+            console.log(Object.keys(graph))
             setGraph(graph);
         })
         console.log("remove get locations socky");
