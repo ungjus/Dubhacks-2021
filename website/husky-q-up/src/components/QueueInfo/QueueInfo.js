@@ -1,6 +1,8 @@
 import React from 'react';
 import './queue-info.css';
 import Plot from "react-plotly.js";
+import { Container } from 'react-bootstrap';
+
 
 const QueueInfo = ({ selectedLocation, queueData, graph }) => {
     // let numPeople = getLocationData(selectedLocation);
@@ -9,6 +11,7 @@ const QueueInfo = ({ selectedLocation, queueData, graph }) => {
     let numPeople = queueData['numberInLine'];
     let predictedTime = queueData['predictedTime'];
     return(
+        <Container>
         <div className="info-container">
             <div className="info-box">
                 <div className="left-box">
@@ -46,6 +49,7 @@ const QueueInfo = ({ selectedLocation, queueData, graph }) => {
                     />}
                 </div>
         </ div>
+        </Container>
     )
 }
 export default QueueInfo;
