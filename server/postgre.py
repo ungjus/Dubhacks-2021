@@ -180,6 +180,32 @@ def add_one_person_to_line(conn, table_name, data):
         print(error)
 
 
+def grab_current_data(conn, table_name):
+    data = pd.DataFrame(columns=['line_number',
+                                 'givenName',
+                                 'familyName',
+                                 'email'])
+    try:
+        # Get connection cursor
+        with conn.cursor() as cur:
+            # Gather all table data
+            cur.execute(sql.SQL("SELECT * FROM {};").format(sql.Identifier(table_name)))
+            row = cur.fetchone()
+            count = 0
+            while row is not None:
+                if row:
+                    data.loc[count] = row
+                    count = count + 1
+                row = cur.fetchone()
+        # close communication with the PostgreSQL database server
+        cur.close()
+        # Commit the changes
+        conn.commit()
+    except (Exception, psycopg2.DatabaseError) as error:
+        print(error)
+    return data
+
+
 def remove_first_person(conn, table_name):
     try:
         # Get connection cursor
