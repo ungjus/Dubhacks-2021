@@ -10,8 +10,17 @@ const QueueInfo = ({ selectedLocation, queueData, graph }) => {
     let predictedTime = queueData['predictedTime'];
     return(
         <div className="info-container">
-            <p>Number of people in line: {numPeople}</p>
-            <p>Time Till Front: {predictedTime}</p>
+            <div className="info-box">
+                <div className="left-box">
+                    <p className="label" >Number of people in line</p> 
+                    <p className="data" >{numPeople}</p>
+                </div>
+                <div className="right-box">
+                    <p className="label" >Time Until at the Front</p> 
+                    <p className="data" >{predictedTime}</p>
+                </div>
+            </div>
+            
             <div className="graph-container" >
                 {console.log(graph)}
                     {graph && <Plot
