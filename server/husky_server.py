@@ -1,12 +1,8 @@
-import json
 from flask import Flask, render_template
 from flask_socketio import SocketIO, send, emit
 from postgre import connect, create_tables, table_exists, add_historical_data, add_one_person_to_line
 from postgre import remove_first_person, check_number_in_line, drop_table, remove_specific_person, \
     check_number_of_people_in_line
-import pandas as pd
-import plotly
-import plotly.express as px
 from number_generator import json_graphs, predict_amount_of_time_spent, create_arrays, create_arrays_current
 
 conn = connect()
@@ -40,7 +36,10 @@ def add_person(profile):
         future_number_in_line = 0
     add_one_person_to_line(conn, table_name, [future_number_in_line, givenName, familyName, email])
     number_in_line = check_number_in_line(conn, table_name, email)
-    sio.emit('Number People', number_in_line)
+    predicted_time = predict_amount_of_time_spent(conn, historical_table_name, table_name, email)
+    dic = {'numberInLine': number_in_line,
+            'predictedTime':predicted_time}
+    sio.emit('Number People', dic)
     print(email)
     print(givenName)
     print(familyName)

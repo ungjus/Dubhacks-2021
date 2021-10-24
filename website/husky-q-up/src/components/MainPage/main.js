@@ -12,12 +12,6 @@ import About from '../About/about'
 import Admin from '../Admin/admin'
 import Footer from '../Footer/footer'
 import NavBar from '../Navbar/navbar'
-// import Plot from "react-plotly.js";
-// import Plotly from "plotly.js"
-// import createPlotlyComponent from 'react-plotly.js/factory';
-// const Plot = createPlotlyComponent(Plotly);
-
-
 import './main.css';
 
 const Main = () => {
