@@ -148,3 +148,19 @@ def predict_amount_of_time_spent(conn, historical_table_name, current_table_name
     if estimated_time < 0:
         estimated_time = 0
     return estimated_time
+
+
+def predict_amount_of_time_spent_without_email(conn, historical_table_name, current_table_name):
+    # Get military hour right now
+    military_hour = int(datetime.datetime.now().strftime("%H")) - 1
+    df = grab_historical_data(conn, historical_table_name)
+    df = df[["military_time_hour", "minutes_spent_per_person"]]
+    df = df.loc[df["military_time_hour"] == military_hour]["minutes_spent_per_person"].values[0]
+    if df is None:
+        return 0
+    average_time_per_person = df
+    number_in_line = check_number_of_people_in_line(conn, current_table_name)
+    estimated_time = number_in_line * average_time_per_person
+    if estimated_time < 0:
+        estimated_time = 0
+    return estimated_time

@@ -4,6 +4,7 @@ from postgre import connect, create_tables, table_exists, add_historical_data, a
 from postgre import remove_first_person, check_number_in_line, drop_table, remove_specific_person, \
     check_number_of_people_in_line
 from number_generator import json_graphs, predict_amount_of_time_spent, create_arrays, create_arrays_current
+from number_generator import predict_amount_of_time_spent_without_email
 
 conn = connect()
 
