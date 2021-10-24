@@ -10,7 +10,7 @@ HOST_IP = 'localhost'
 HOST_PORT = '4040'
 
 app = Flask(__name__)
-sio = SocketIO(app, cors_allowed_origins="*")
+sio = SocketIO(app, cors_allowed_origins="*", async_mode='threading')
 
 locations = ['pagliaccis', 'lander_desk']
 
@@ -28,10 +28,17 @@ def add_person(profile):
     else:
         table_name = "lander_desk_current"
     print(table_name)
-    future_number_in_line = check_number_in_line(conn, table_name, email)
+    future_number_in_line = check_number_of_people_in_line(conn, table_name)
+    if future_number_in_line is None:
+        future_number_in_line = 0
     add_one_person_to_line(conn, table_name, [future_number_in_line, givenName, familyName, email])
     number_in_line = check_number_in_line(conn, table_name, email)
     sio.emit('Number People', number_in_line)
+    print(email)
+    print(givenName)
+    print(familyName)
+    print(location)
+
     print("Your number is:")
     print(number_in_line)
     print("Number of people in line:")
@@ -63,7 +70,13 @@ def send_location():
 @sio.on("Get Number People")
 def get_num_people(location):
     print(location)
-
+    if location == "pagliaccis":
+        table_name = "pagliacci_current"
+    else:
+        table_name = "lander_desk_current"
+    num_in_line = check_number_of_people_in_line(conn, table_name)
+    print("num people", num_in_line)
+    sio.emit("Number People", num_in_line)
 
 if __name__ == '__main__':
     print('hello world')
