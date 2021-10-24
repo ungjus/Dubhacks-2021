@@ -59,7 +59,7 @@ const Home = ({ locations, sendUserData, removeUser, getLocation, selectedLocati
                         <div class="col text-center">
 
                         {selectedLocation &&
-                            <Button id="button-style" onClick={handleClick} disabled={!signedIn || selectedLocation === ""}>
+                            <Button id={inQueue ? "cancel-style" : "button-style"} onClick={handleClick} disabled={!signedIn || selectedLocation === ""}>
                                 {inQueue ? "Cancel" : "Queue up"}
                             </Button>}
                         </div>

@@ -22,6 +22,13 @@
     border-radius: 12px;
 }
 
+#cancel-style {
+    background-color: #bb5755;
+    border-color: #e39291;
+    font-size: 60px;
+    border-radius: 12px;
+}
+
 #button-style:disabled {
     background-color: gray;
 }
