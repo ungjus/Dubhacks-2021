@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Select from 'react-select';
 
 const Dropdown = ({ id, locations, getLocation, getTableData }) => {
@@ -40,18 +40,6 @@ const Dropdown = ({ id, locations, getLocation, getTableData }) => {
             return { ...provided, opacity, transition };
         }
       }
-    // const customStyles = {
-    //     control: styles => ({ ...styles, backgroundColor: 'white' }),
-    //     option: (styles, { data, isDisabled, isFocused, isSelected }) => {
-    //       const color = chroma(data.color);
-          
-    //         ...styles,
-    //         backgroundColor: isDisabled ? 'red' : blue,
-    //         color: '#FFF',
-    //         cursor: isDisabled ? 'not-allowed' : 'default',
-    //         ...
-    //     }
-    //   }
 
     return (
         <div>
