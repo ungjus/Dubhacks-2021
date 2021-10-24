@@ -37,8 +37,8 @@ const Home = ({ locations, sendUserData, removeUser, getLocation, selectedLocati
                 </header>
                 <div className="steps-container">
                     <p className="instructions">1. Sign in with your UW email.</p> 
-                    <p className="instructions">2. Select a location and see the number of people in line. </p>
-                    <p className="instructions">3. Then decide to enter the queue up to not</p>
+                    <p className="instructions">2. Select a location to see the number of people in line. </p>
+                    <p className="instructions">3. Then decide to enter the queue up to not.</p>
                 </div>
 
                 <Dropdown 
