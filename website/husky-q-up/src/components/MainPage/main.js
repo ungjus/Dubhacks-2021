@@ -18,9 +18,11 @@ import Plot from "react-plotly.js";
 // const Plot = createPlotlyComponent(Plotly);
 
 
+// import './main.css';
+
 const Main = () => {
     const [profile, setProfile] = useState(null);
-    const [locations, setLocations] = useState(['lander', 'local point']);
+    const [locations, setLocations] = useState([]);
     const [userData, setUserData] = useState(null);
     const [selectedLocation, setSelectedLocation] = useState("");
     const [numPeople, setNumPeople] = useState(0);
@@ -43,19 +45,37 @@ const Main = () => {
             console.log(Object.values(graph))
             setGraph(graph);
         })
+        console.log("remove get locations socky");
     }, []);
 
-    const getLocation = (loc) => {
-        // console.log(loc.value);
-        setSelectedLocation(loc.value);
-    }
 
-    const getLocationData = (selectedLocation) => {
-        socket.emit("Get Number People", selectedLocation);
+    // useEffect(() => {
+    //     console.log("TURN off socket");
+    //     return () => socket.off('Number People', (numPeople) => {
+    //         console.log(numPeople);
+    //         setNumPeople(numPeople);
+    //     });
+    // }, [selectedLocation])
+
+
+
+    const getLocation = (loc) => {
+        console.log("update location", loc.value);
+        setSelectedLocation(loc.value);
+
+        console.log("here" + loc.value);
+
+        // get number of people in line
+        socket.emit("Get Number People", loc.value);
 
         socket.on("Number People", (numPeople) => {
+            console.log(numPeople);
             setNumPeople(numPeople);
         }); 
+    }
+
+    const getLocationData = () => {
+        
     }
 
     const getUserData = (userData) => {
@@ -92,6 +112,7 @@ const Main = () => {
                     getLocation={getLocation}
                     selectedLocation={selectedLocation}
                     getLocationData={getLocationData}
+                    numPeople={numPeople}
                 />
             </Route>
             <Route path="/about">
