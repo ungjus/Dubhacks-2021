@@ -116,10 +116,14 @@ def create_arrays(conn):
                                          "military_time_hour"]].sort_values(by=["military_time_hour"])
     dataframe_lander["military_time_hour"] = dataframe_lander["military_time_hour"].apply(time_convert)
 
-    x_pag = list(dataframe_pag["military_time_hour"].to_numpy())
-    y_pag = list(dataframe_pag["average_number_of_people"].to_numpy())
-    x_lander = list(dataframe_lander["military_time_hour"].to_numpy())
-    y_lander = list(dataframe_lander["average_number_of_people"].to_numpy())
+    x_pag = list(dataframe_pag["military_time_hour"])
+    y_pag = list(dataframe_pag["average_number_of_people"])
+    for i in range(len(y_pag)):
+        y_pag[i] = float(y_pag[i])
+    x_lander = list(dataframe_lander["military_time_hour"])
+    y_lander = list(dataframe_lander["average_number_of_people"])
+    for i in range(len(y_lander)):
+        y_lander[i] = float(y_lander[i])
 
     return [x_pag, y_pag, x_lander, y_lander]
 
