@@ -36,16 +36,24 @@ const QueueInfo = ({ selectedLocation, queueData, graph }) => {
                     {console.log(graph)}
                         {graph && <Plot
                             data={[
-                            {
-                                x: graph.x,
-                                y: graph.y,
-                                type: 'scatter',
-                                mode: 'lines+markers',
-                                marker: {color: 'red'},
-                            },
-                            {type: 'bar', x: graph.x, y: graph.y},
+                                {
+                                    x: graph.x,
+                                    y: graph.y,
+                                    name: "Scatter Plot",
+                                    type: 'scatter',
+                                    mode: 'lines+markers',
+                                    marker: {color: '#e39291'},
+                                },
+                                {   
+                                    type: 'bar', 
+                                    x: graph.x, 
+                                    y: graph.y, 
+                                    name:"Bar Graph",
+                                    marker:{color: '#B1D4E0'}
+    
+                                },
                             ]}
-                            layout={ {width: 500, height: 500, title: selectedLocation} }
+                            layout={ {width: 500, height: 500, title: selectedLocation, yaxis:{title:{text:"Number of People"}}, xaxis:{title: {text:"Time of day"}} } }
                         />}
                     </div>
             </ div>
