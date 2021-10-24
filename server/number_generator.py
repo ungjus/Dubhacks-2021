@@ -6,6 +6,7 @@ import plotly
 import plotly.express as px
 import numpy as np
 import datetime
+from random import randrange
 
 
 def generate_random_number(mean, state):
@@ -142,14 +143,14 @@ def predict_amount_of_time_spent(conn, historical_table_name, current_table_name
     df = grab_historical_data(conn, historical_table_name)
     df = df[["military_time_hour", "minutes_spent_per_person"]]
     df = df.loc[df["military_time_hour"] == military_hour]["minutes_spent_per_person"].values[0]
-    if df is None:
-        return 0
     average_time_per_person = df
+    if df is None:
+        average_time_per_person = 2
     number_in_line = check_number_in_line(conn, current_table_name, email)
     estimated_time = (number_in_line - 1) * average_time_per_person
-    if estimated_time < 0:
-        estimated_time = 0
-    return estimated_time
+    if estimated_time == 0:
+        estimated_time = number_in_line * 2 
+    return estimated_time + randrange(4)
 
 
 def predict_amount_of_time_spent_without_email(conn, historical_table_name, current_table_name):
@@ -160,11 +161,11 @@ def predict_amount_of_time_spent_without_email(conn, historical_table_name, curr
     df = grab_historical_data(conn, historical_table_name)
     df = df[["military_time_hour", "minutes_spent_per_person"]]
     df = df.loc[df["military_time_hour"] == military_hour]["minutes_spent_per_person"].values[0]
-    if df is None:
-        return 0
     average_time_per_person = df
+    if df is None:
+        average_time_per_person = 2
     number_in_line = check_number_of_people_in_line(conn, current_table_name)
     estimated_time = number_in_line * average_time_per_person
-    if estimated_time < 0:
-        estimated_time = 0
-    return estimated_time
+    if estimated_time == 0:
+        estimated_time = number_in_line * 2
+    return estimated_time + randrange(4)

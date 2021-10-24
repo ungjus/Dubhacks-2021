@@ -22,8 +22,8 @@ current_tables = ["pagliacci_current", "lander_desk_current"]
 
 #create_tables(conn)
 
-#add_historical_lander_data_for_range_of_dates(conn)
-#add_historical_pag_data_for_range_of_dates(conn)
+add_historical_lander_data_for_range_of_dates(conn)
+add_historical_pag_data_for_range_of_dates(conn)
 
 #create_arrays(conn)
 
@@ -48,7 +48,7 @@ add_one_person_to_line(conn, "lander_desk_current", [future_number_lander, 'NotH
     remove_first_person(conn, "pagliacci_current")
     remove_first_person(conn, "lander_desk_current")"""
 
-print(predict_amount_of_time_spent_without_email(conn, "lander_desk_historical", "lander_desk_current"))
+# print(predict_amount_of_time_spent_without_email(conn, "lander_desk_historical", "lander_desk_current"))
 
 print(check_number_of_people_in_line(conn, "pagliacci_current"))
 print(check_number_of_people_in_line(conn, "lander_desk_current"))
