@@ -1,0 +1,25 @@
+.form-style {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+}
+
+.password-style {
+    border: 1px black solid;
+    font-size: 30px;
+}
+.lable-style {
+    font-size: 30px;
+}
+
+.submit-style {
+    font-size: 30px;
+    background-color: #e39291;
+    border-color: #e39291;
+}
+h2 {
+    text-align: center;
+}

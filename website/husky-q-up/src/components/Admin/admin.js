@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Dropdown from '../Dropdown/dropdown';
 import { Button, Container } from 'react-bootstrap';
+import './admins.css'
 
 const Admin = ({ locations, getLocation, getTableData, table, removeUser, adminLocation }) => {
     const columns = [{heading: "ID", property: "position"}, {heading: "First Name", property: "fname"},  {heading: "Last Name", property: "lname"}, {heading: "Email", property: "email"}]
@@ -84,13 +85,17 @@ const Admin = ({ locations, getLocation, getTableData, table, removeUser, adminL
         </div>) : 
         
         (<Container>
-            <form onSubmit={handleSubmit}>
-                <label>
-                 Password:
-                 <input type="password" name="name" />
-                </label>
-                <input type="submit" value="Submit" />
-            </form>
+            <div className="form-style">
+                <h2>Enter Credentials</h2>
+                <br/>
+                <form onSubmit={handleSubmit}>
+                    <label className="lable-style">
+                        Password:
+                        <input className="password-style" type="password" name="name" />
+                    </label>
+                    <input className="submit-style" type="submit" value="Submit" />
+                </form>
+            </div>
         </Container>)
     )
 }
