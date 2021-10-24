@@ -1,6 +1,10 @@
 import React from 'react';
 import './about.css';
 import hanrat from './hanrat.png';
+import han from './han.jpeg'
+import bryce from './bryce.jpeg'
+import CJ from './tim.jpeg'
+import justin from './justin.JPG'
 import { Container } from 'react-bootstrap';
 
 const About = () => {
@@ -28,23 +32,35 @@ const About = () => {
                 <h2>Meet the Team</h2>
                 <div id="card-container">
                     <section className="card">
-                        <h2>Justin</h2>
+                        <img src={justin}></img>
+                        <section>
+                            <h2>Justin Ung</h2>
+                            <p>Full-stack Developer</p>
+                        </section>
                     </section>
 
                     <section className="card">
-                        <img src={hanrat}></img>
-                        <h2>Han</h2>
-                        <p>front-end god</p>
-                        
+                        <img src={han}></img>
+                        <section>
+                            <h2>Han Nguyen</h2>
+                            <p>Front-end Devloper and UX Designer</p>
+                        </section>
                     </section>
 
                     <section className="card">
-                        <h2>Caesar</h2>
-                        <p>back-end god</p>
+                        <img src={CJ}></img>
+                        <section>
+                            <h2>Caesar Tuguinay</h2>
+                            <p>Back-end Developer and Data Scientist</p>
+                        </section>
                     </section>
 
                     <section className="card">
-                        <h2>Bryce</h2>
+                        <img src={bryce}></img>
+                        <section>
+                            <h2>Bryce Nguyen</h2>
+                            <p>Front-end Developer</p>
+                        </section>
                     </section>
 
                 </div>
