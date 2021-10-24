@@ -53,7 +53,8 @@ const QueueInfo = ({ selectedLocation, queueData, graph }) => {
     
                                 },
                             ]}
-                            layout={ {width: 1000, height: 500, title: selectedLocation, yaxis:{title:{text:"Number of People"}}, xaxis:{title: {text:"Time of day"}} }}
+                            layout={ {width: 1000, height: 500, title: selectedLocation, 
+                                    yaxis:{title:{text:"Number of People"}}, xaxis:{title: {text:"Time of day"}} }}
                             config={ {responsive: 'true'}}
                         />}
                     </div>
