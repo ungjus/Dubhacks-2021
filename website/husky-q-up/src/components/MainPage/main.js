@@ -37,21 +37,6 @@ const Main = () => {
             // console.log(locations);
             setLocations(loc_list);
         });
-        socket.emit("Test Graph");
-        socket.on("Get Graph", (graph) => {
-            console.log("got graph!")
-            console.log(graph)
-            console.log('x data')
-            console.log(graph.x)
-            console.log('x data')
-            console.log(graph.y)
-            setGraph(graph);
-        })
-        socket.emit("Send Table Data", 'lander_desk');
-        socket.on("Get Table Data", (table) => {
-            console.log("got table!")
-            console.log(table)
-        })
         console.log("remove get locations socky");
     }, []);
 
@@ -78,11 +63,19 @@ const Main = () => {
         socket.on("Number People", (numPeople) => {
             console.log(numPeople);
             setNumPeople(numPeople);
-        }); 
-    }
-
-    const getLocationData = () => {
+            socket.off("Number People");
+        });
         
+        socket.emit("Test Graph");
+        socket.on("Get Graph", (graph) => {
+            console.log("got graph!")
+            console.log(graph)
+            console.log('x data')
+            console.log(graph.x)
+            console.log('x data')
+            console.log(graph.y)
+            setGraph(graph);
+        })
     }
 
     const getUserData = (userData) => {
@@ -118,8 +111,8 @@ const Main = () => {
                     removeUser={removeUser}
                     getLocation={getLocation}
                     selectedLocation={selectedLocation}
-                    getLocationData={getLocationData}
                     numPeople={numPeople}
+                    graph={graph}
                 />
             </Route>
             <Route path="/about">

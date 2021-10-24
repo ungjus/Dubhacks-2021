@@ -5,10 +5,9 @@ import Dropdown from '../Dropdown/dropdown';
 import QueueInfo from '../QueueInfo/QueueInfo';
 // import {profile} from'../Login/login';
 import './home.css';
-import Plot from "react-plotly.js";
 
 
-const Home = ({ locations, sendUserData, removeUser, getLocation, selectedLocation, getLocationData, numPeople }) => {
+const Home = ({ locations, sendUserData, removeUser, getLocation, selectedLocation, getLocationData, numPeople, graph }) => {
     const [inQueue, setInQueue] = useState(false);
     //const []
 
@@ -37,23 +36,10 @@ const Home = ({ locations, sendUserData, removeUser, getLocation, selectedLocati
                 <Dropdown locations={locations} getLocation={getLocation} getLocationData={getLocationData}/>
                 <QueueInfo 
                     selectedLocation={selectedLocation} 
-                    numPeople={numPeople}    
+                    numPeople={numPeople}
+                    graph={graph}    
                 />
-                <div className="graph-container" >
-                    <Plot
-                        data={[
-                        {
-                            x: [1, 2, 3],
-                            y: [2, 6, 3],
-                            type: 'scatter',
-                            mode: 'lines+markers',
-                            marker: {color: 'red'},
-                        },
-                        {type: 'bar', x: [1, 2, 3], y: [2, 5, 3]},
-                        ]}
-                        layout={ {width: 500, height: 500, title: 'A Fancy Plot'} }
-                    />
-                </div>
+                
                 <br/>
                 <div className="container">
                     <div className="row">
