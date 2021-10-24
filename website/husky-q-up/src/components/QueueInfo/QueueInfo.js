@@ -1,13 +1,13 @@
 import React from 'react';
 
 
-const QueueInfo = ({ selectedLocation, getLocationData }) => {
-    let numPeople = getLocationData(selectedLocation);
-    console.log(numPeople); 
+const QueueInfo = ({ selectedLocation, numPeople }) => {
+    // let numPeople = getLocationData(selectedLocation);
+
     return(
         <div className="queue-info">
             {selectedLocation}
-            <p>People here: {getLocationData(selectedLocation)}</p>
+            <p>People here: {numPeople}</p>
         </ div>
     )
 }
