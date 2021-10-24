@@ -19,7 +19,7 @@ const Main = () => {
     const [locations, setLocations] = useState([]);
     const [userData, setUserData] = useState(null);
     const [selectedLocation, setSelectedLocation] = useState("");
-    const [queueData, setQueeuData] = useState(0);
+    const [queueData, setQueueData] = useState(0);
     const [graph, setGraph] = useState(null);
     const [table, setTable] = useState(null);
 
@@ -35,7 +35,7 @@ const Main = () => {
         socket.emit("Get Location Data", selectedLocation);
         socket.on("Queue Data", (data) => {
             console.log('data ', data)
-            setQueeuData(data['numberInLine']);
+            setQueueData(data['numberInLine']);
             // socket.off("Queue Data");
         });
         socket.emit("Send Table Data", 'lander_desk')
@@ -79,7 +79,7 @@ const Main = () => {
         socket.emit("Get Location Data", loc.value);
         socket.on("Queue Data", (data) => {
             console.log('data ', data)
-            setQueeuData(data);
+            setQueueData(data);
             // socket.off("Queue Data");
         });
     }
@@ -118,6 +118,7 @@ const Main = () => {
                     getLocation={getLocation}
                     selectedLocation={selectedLocation}
                     queueData={queueData}
+                    setQueueData={setQueueData}
                     graph={graph}
                 />
             </Route>

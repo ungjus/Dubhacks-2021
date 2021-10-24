@@ -6,11 +6,26 @@ import QueueInfo from '../QueueInfo/QueueInfo';
 import './home.css';
 
 
-const Home = ({ locations, sendUserData, removeUser, getLocation, selectedLocation, getTableData, queueData, graph }) => {
+const Home = ({ locations, sendUserData, removeUser, getLocation, selectedLocation, getTableData, queueData, setQueueData, graph }) => {
     const [inQueue, setInQueue] = useState(false);
 
     const handleClick = () => {
-        inQueue ? removeUser(): sendUserData();
+        // inQueue ? removeUser(): sendUserData();
+        // setInQueue(!inQueue);
+
+        // let numPeople = queueData['numberInLine'];
+        // setQueueData({...queueData, 'numberInLine': numPeople + 1});
+
+        if (inQueue) {
+            removeUser();
+            let numPeople = queueData['numberInLine'];
+            setQueueData({...queueData, 'numberInLine': numPeople - 1});
+        } else {
+            sendUserData();
+            let numPeople = queueData['numberInLine'];
+            setQueueData({...queueData, 'numberInLine': numPeople + 1});
+        }
+
         setInQueue(!inQueue);
     }
 
