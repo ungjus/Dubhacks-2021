@@ -17,7 +17,7 @@ const QueueInfo = ({ selectedLocation, queueData, graph }) => {
                         <p className="label" >Number of People in Line</p>
                         <div className="circle">
                             <p className="data" >{numPeople}</p>
-                            <p className="data-extra">people</p>
+                            <p className="data-extra">People</p>
                         </div>
                         <p className="pun">Do you want to queue up? Ink about it...</p>
                     </div>
