@@ -1,0 +1,20 @@
+#card-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    margin: 15px;
+    height: 400px;
+    width: 300px;
+}
+
+img {   
+    height: 200px;
+
+}
+
