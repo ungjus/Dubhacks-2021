@@ -1,5 +1,6 @@
 from postgre import connect, create_tables, table_exists, add_historical_data, add_one_person_to_line
 from postgre import remove_first_person, check_number_in_line, drop_table, check_number_of_people_in_line
+from postgre import remove_specific_person
 import datetime
 
 x = datetime.datetime.now().strftime("%x")
@@ -20,12 +21,14 @@ conn = connect()
 
 #add_historical_data(conn, "lander_desk_historical", [x, 1, 10, 2])
 
-#add_one_person_to_line(conn, "lander_desk_current", ['Han', 'Nguyen', 'han@gmail.com'])
+add_one_person_to_line(conn, "lander_desk_current", ['Han', 'Nguyen', 'han@gmail.com'])
 
 print(check_number_in_line(conn, "lander_desk_current", 'han@gmail.com'))
 
-for i in range(0,20):
-    remove_first_person(conn, "lander_desk_current")
+remove_specific_person(conn, "lander_desk_current", 'han@gmail.com')
+
+#for i in range(0,20):
+    #remove_first_person(conn, "lander_desk_current")
 
 print(check_number_of_people_in_line(conn, "lander_desk_current"))
 

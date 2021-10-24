@@ -29,7 +29,10 @@ def add_person(profile):
         table_name = "lander_desk_current"
     add_one_person_to_line(conn, table_name, [givenName, familyName, email])
     number_in_line = check_number_in_line(conn, table_name, email)
+    print("Your number is:")
     print(number_in_line)
+    print("Number of people in line:")
+    print("Predicted amount of time to wait in line:")
 
 
 @sio.on("Send Location")
