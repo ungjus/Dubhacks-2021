@@ -19,7 +19,7 @@ const Login = ({ getUserData, setSignedIn }) => {
         <div>
             <GoogleLogin
                 clientId={clientId}
-                buttonText="Sign in with UW Google"
+                buttonText="Sign in with UW Email"
                 onSuccess={respond}
                 onFailure={respond}
                 cookiePolicy={'single_host_origin'}
