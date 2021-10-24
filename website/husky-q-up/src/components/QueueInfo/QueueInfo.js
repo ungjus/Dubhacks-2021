@@ -2,7 +2,10 @@ import React from 'react';
 import './queue-info.css';
 import Plot from "react-plotly.js";
 import { Container } from 'react-bootstrap';
+<<<<<<< HEAD
+=======
 
+>>>>>>> c7d486cd09a8a0384a018fe9742a059722b6bac1
 
 const QueueInfo = ({ selectedLocation, queueData, graph }) => {
     // let numPeople = getLocationData(selectedLocation);
@@ -12,43 +15,44 @@ const QueueInfo = ({ selectedLocation, queueData, graph }) => {
     let predictedTime = queueData['predictedTime'];
     return(
         <Container>
-        <div className="info-container">
-            <div className="info-box">
-                <div className="left-box">
-                    <p className="label" >Number of people in line</p> 
-                    <p className="data" >{numPeople}</p>
-                </div>
-                <div className="right-box">
-                    <p className="label" >Time Until at the Front</p> 
-                    <p className="data" >{predictedTime}</p>
-                </div>
-            </div>
-            
-            <div className="graph-container" >
-                {console.log(graph)}
-                    {graph && <Plot
-                        data={[
+            <div className="info-container">
+                {selectedLocation && <div className="info-box">
+                    <div className="left-container">
+                        <p className="label" >Number of people in line</p>
+                        <div className="circle">
+                            <p className="data" >{numPeople}</p>
+                            <p className="data-extra">people</p>
+                        </div>
+                        <p className="pun">Do you want to queue up? Ink about it...</p>
+                    </div>
+
+                    <div className="right-container">
+                        <p className="label" >Estimated Wait Time</p> 
+                        <div className="circle">
+                            <p className="data" >{predictedTime}</p>
+                            <p className="data-extra">time units</p>
+                        </div>
+                        <p className="pun">Yes, this is the wait. We are not squidding!</p>
+                    </div>
+                </div>}
+                
+                <div className="graph-container" >
+                    {console.log(graph)}
+                        {graph && <Plot
+                            data={[
                             {
                                 x: graph.x,
                                 y: graph.y,
-                                name: "Scatter Plot",
                                 type: 'scatter',
                                 mode: 'lines+markers',
-                                marker: {color: '#e39291'},
+                                marker: {color: 'red'},
                             },
-                            {   
-                                type: 'bar', 
-                                x: graph.x, 
-                                y: graph.y, 
-                                name:"Bar Graph",
-                                marker:{color: '#B1D4E0'}
-                            
-                            },
-                        ]}
-                        layout={ {width: 500, height: 500, title: selectedLocation, yaxis:{title:{text:"Number of People"}}, xaxis:{title: {text:"Time of day"}}} }
-                    />}
-                </div>
-        </ div>
+                            {type: 'bar', x: graph.x, y: graph.y},
+                            ]}
+                            layout={ {width: 500, height: 500, title: selectedLocation} }
+                        />}
+                    </div>
+            </ div>
         </Container>
     )
 }
