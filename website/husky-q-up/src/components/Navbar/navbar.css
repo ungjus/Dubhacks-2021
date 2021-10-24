@@ -14,7 +14,16 @@
 }
 
 .nav-link:hover {
-    color: 	black !important;
+    color: 	#e39291 !important;
+}
+
+#signed-in {
+    color: #3a3b3c;
+    margin-left: 5px;
+}
+
+#username {
+    font-weight: bold;
 }
 
 #logo {
