@@ -72,7 +72,7 @@ const Main = () => {
             socket.off("Number People");
         });
         
-        socket.emit("Send Graph", loc.value);
+        socket.emit("Send Graph");
         socket.on("Get Graph", (graph) => {
             console.log("got graph!")
             setGraph(graph);

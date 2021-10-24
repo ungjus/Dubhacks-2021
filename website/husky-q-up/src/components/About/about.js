@@ -1,5 +1,6 @@
 import React from 'react';
-import {Container, Row, Col} from 'react-bootstrap'
+import './about.css';
+import hanrat from './hanrat.png';
 
 const About = () => {
     return(<main>
@@ -10,13 +11,28 @@ const About = () => {
         </section>
         <section>
             <h2>Meet the Team</h2>
-            <Container>
-                <Row>
-                    <Col>1 of 1</Col>
-                    <Col>1 of 1</Col>
-                    <Col>1 of 1</Col>
-                </Row>
-            </Container>
+            <div id="card-container">
+                <section className="card">
+                    <h2>Justin</h2>
+                </section>
+
+                <section className="card">
+                    <img src={hanrat}></img>
+                    <h2>Han</h2>
+                    <p>front-end god</p>
+                    
+                </section>
+
+                <section className="card">
+                    <h2>Caesar</h2>
+                    <p>back-end god</p>
+                </section>
+
+                <section className="card">
+                    <h2>Bryce</h2>
+                </section>
+
+            </div>
         </section>
         
     </main>)
