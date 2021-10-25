@@ -41,6 +41,10 @@ const Home = ({ locations, sendUserData, removeUser, getLocation, selectedLocati
             timerId = null;
             setTime(0);
         }
+
+        return () => {
+            clearInterval(timerId);
+          };
     }, [inQueue]);
 
     return(
