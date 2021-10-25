@@ -10,6 +10,7 @@ const Admin = ({ locations, getLocation, getTableData, table, removeUser, adminL
 
     // const [betterTable, setBetterTable] = useState([])
     const [loggedIn, setLoggedIn] = useState(false);
+    const [pass, setPass] = useState("");
     let bettererTable = [];
 
     const formatTable = () => {
@@ -53,7 +54,11 @@ const Admin = ({ locations, getLocation, getTableData, table, removeUser, adminL
     }
 
     const handleSubmit = () => {
-        setLoggedIn(true);
+        if (pass === "too ez") {
+            setLoggedIn(true);
+        } else {
+            alert("WRONG PASSWORD");
+        }
     }
 
     return(
@@ -93,7 +98,7 @@ const Admin = ({ locations, getLocation, getTableData, table, removeUser, adminL
                 <form onSubmit={handleSubmit}>
                     <label className="lable-style">
                         Password:
-                        <input className="password-style" type="password" name="name" />
+                        <input className="password-style" value={pass} type="password" name="name" onChange={(e) => {setPass(e.target.value)}}/>
                     </label>
                     <input className="submit-style" type="submit" value="Submit" />
                 </form>
