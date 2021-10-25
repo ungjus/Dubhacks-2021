@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { Button, Container } from 'react-bootstrap';
 import Dropdown from '../Dropdown/dropdown';
 import QueueInfo from '../QueueInfo/QueueInfo';
@@ -7,6 +7,8 @@ import './home.css';
 
 const Home = ({ locations, sendUserData, removeUser, getLocation, selectedLocation, getTableData, queueData, setQueueData, graph, signedIn }) => {
     const [inQueue, setInQueue] = useState(false);
+
+    const [time, setTime] = useState(0);
 
     const handleClick = () => {
         // inQueue ? removeUser(): sendUserData();
@@ -27,6 +29,19 @@ const Home = ({ locations, sendUserData, removeUser, getLocation, selectedLocati
 
         setInQueue(!inQueue);
     }
+
+    useEffect(() => {
+        let timerId = null;
+        if (inQueue) {
+            timerId = setInterval(() => {
+                setTime(time => time + 1);
+            }, 1000);
+        } else {
+            clearInterval(timerId);
+            timerId = null;
+            setTime(0);
+        }
+    }, [inQueue]);
 
     return(
         <main>
@@ -62,6 +77,7 @@ const Home = ({ locations, sendUserData, removeUser, getLocation, selectedLocati
                             <Button id={inQueue ? "cancel-style" : "button-style"} onClick={handleClick} disabled={!signedIn || selectedLocation === ""}>
                                 {inQueue ? "Cancel" : "Queue up"}
                             </Button>}
+                            {inQueue && <p>Time in Queue: {time}</p>}
                         </div>
                     </div>
                 </div>
