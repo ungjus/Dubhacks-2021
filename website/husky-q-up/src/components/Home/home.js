@@ -47,6 +47,24 @@ const Home = ({ locations, sendUserData, removeUser, getLocation, selectedLocati
           };
     }, [inQueue]);
 
+    const formatTime = (s) => {
+        let minutes = Math.floor(s / 60);
+        let seconds = s % 60;
+        let timeString = "";
+    
+        if (minutes < 10) {
+          timeString += "0";
+        }
+        timeString += minutes + ":";
+    
+        if (seconds < 10) {
+          timeString += "0";
+        }
+    
+        timeString += seconds;
+        return timeString;
+    }
+
     return(
         <main>
             <Container>
@@ -81,7 +99,7 @@ const Home = ({ locations, sendUserData, removeUser, getLocation, selectedLocati
                             <Button id={inQueue ? "cancel-style" : "button-style"} onClick={handleClick} disabled={!signedIn || selectedLocation === ""}>
                                 {inQueue ? "Cancel" : "Queue up"}
                             </Button>}
-                            {inQueue && <p>Time in Queue: {time}</p>}
+                            {inQueue && <p>Time in Queue: {formatTime(time)}</p>}
                         </div>
                     </div>
                 </div>
